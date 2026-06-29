@@ -1,3 +1,7 @@
+import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
+import { SectionHeader } from "@/components/shared/section-header";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,8 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
 
 export default function Home() {
   return (
@@ -15,17 +17,15 @@ export default function Home() {
       <Section spacing="lg">
         <Container size="md">
           <div className="text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
-              PROOFTAG-CATIS
-            </p>
+            <Badge variant="accent">PROOFTAG-CATIS </Badge>
 
-            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl">
-              Une interface structurée avec des composants réutilisables propre.
+            <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+              Construire une interface professionnelle composant par composant.
             </h1>
 
             <p className="mt-6 text-lg leading-8 text-muted">
-              Nous venons d’ajouter Container et Section pour organiser les pages
-              avec une structure propre et cohérente cool.
+              Nous créons progressivement le Design System avant de construire
+              les vraies pages du site.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
@@ -40,40 +40,47 @@ export default function Home() {
 
       <Section spacing="md" className="bg-surface">
         <Container>
-          <div className="grid gap-6 md:grid-cols-3">
+          <SectionHeader
+            eyebrow="Fondations UI"
+            title="Des composants réutilisables pour construire plus vite et mieux."
+            description="Chaque composant est conçu pour être cohérent, maintenable et réutilisable dans plusieurs sections du site."
+            align="center"
+          />
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             <Card>
               <CardHeader>
-                <CardTitle>Container</CardTitle>
+                <CardTitle>Badge</CardTitle>
                 <CardDescription>
-                  Contrôle la largeur du contenu.
+                  Sert à afficher un label court ou une catégorie.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                Il permet de garder une mise en page stable sur tout le site.
+                Il permet d’introduire visuellement une section ou un contenu.
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Section</CardTitle>
+                <CardTitle>SectionHeader</CardTitle>
                 <CardDescription>
-                  Gère les espacements verticaux.
+                  Standardise les titres de sections.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                Il évite de répéter les mêmes classes de padding partout.
+                Il évite de répéter les mêmes blocs titre/description partout.
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Design System</CardTitle>
+                <CardTitle>Cohérence</CardTitle>
                 <CardDescription>
-                  Garantit la cohérence visuelle.
+                  Le site garde la même logique visuelle.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                Chaque nouveau composant s’appuie sur les fondations existantes.
+                Chaque section aura une structure propre et prévisible.
               </CardContent>
             </Card>
           </div>
