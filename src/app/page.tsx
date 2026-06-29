@@ -3,81 +3,82 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-6">
-      <section className="max-w-3xl rounded-xl bg-surface p-10 text-center shadow-card">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
-          PROOFTAG-CATIS
-        </p>
+    <main className="min-h-screen bg-background">
+      <Section spacing="lg">
+        <Container size="md">
+          <div className="text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
+              PROOFTAG-CATIS
+            </p>
 
-        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl">
-          Desin en cours.
-        </h1>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+              Une interface structurée avec des composants réutilisables propre.
+            </h1>
 
-        <p className="mt-6 text-lg leading-8 text-muted">
-          un test ui, composant retulisable
-        </p>
+            <p className="mt-6 text-lg leading-8 text-muted">
+              Nous venons d’ajouter Container et Section pour organiser les pages
+              avec une structure propre et cohérente cool.
+            </p>
 
-        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <Card>
-            <CardHeader>
-              <CardTitle>Sécurité documentaire</CardTitle>
-              <CardDescription>Protéger les documents sensibles contre la fraude.</CardDescription>
-            </CardHeader>
-            
-            <CardContent>
-              Une base essentielle pour l’authentification et la traçabilité.
-            </CardContent>
-
-            <CardFooter>
-              <Button variant="outline" size="sm">
-                Découvrir
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button size="lg">Découvrir</Button>
+              <Button variant="outline" size="lg">
+                Nous contacter
               </Button>
-            </CardFooter>
-          </Card>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
-          <Card variant="muted">
-            <CardHeader>
-              <CardTitle>Traçabilité numérique</CardTitle>
-              <CardDescription>
-                Suivre les opérations critiques de bout en bout.
-              </CardDescription>
-            </CardHeader>
+      <Section spacing="md" className="bg-surface">
+        <Container>
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card>
+              <CardHeader>
+                <CardTitle>Container</CardTitle>
+                <CardDescription>
+                  Contrôle la largeur du contenu.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                Il permet de garder une mise en page stable sur tout le site.
+              </CardContent>
+            </Card>
 
-             <CardContent>
-              Une meilleure visibilité sur les processus sensibles.
-            </CardContent>
+            <Card>
+              <CardHeader>
+                <CardTitle>Section</CardTitle>
+                <CardDescription>
+                  Gère les espacements verticaux.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                Il évite de répéter les mêmes classes de padding partout.
+              </CardContent>
+            </Card>
 
-            <CardFooter>
-              <Button variant="outline" size="sm">
-                Explorer
-              </Button>
-            </CardFooter>
-          </Card>
-
-          <Card variant="outline">
-            <CardHeader>
-              <CardTitle>Certidocs CT</CardTitle>
-              <CardDescription>
-                Solution phare pour le contrôle technique automobile.
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent>
-              Centraliser, sécuriser et fiabiliser les opérations.
-            </CardContent>
-
-            <CardFooter>
-              <Button size="sm">Voir la solution</Button>
-            </CardFooter>
-          </Card>
-        </div>
-      </section>
+            <Card>
+              <CardHeader>
+                <CardTitle>Design System</CardTitle>
+                <CardDescription>
+                  Garantit la cohérence visuelle.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                Chaque nouveau composant s’appuie sur les fondations existantes.
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </Section>
     </main>
   );
 }
