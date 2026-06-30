@@ -1,6 +1,9 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -9,6 +12,12 @@ import {
 } from "@/components/ui/card";
 import { company } from "@/constants/company";
 
+export const metadata: Metadata = createMetadata({
+  title: "Mentions légales",
+  description:
+    "Consultez les informations légales de base du site PROOFTAG CATIS.",
+  pathname: "/mentions-legales",
+});
 export default function MentionsLegalesPage() {
   return (
     <main className="min-h-screen bg-background">

@@ -6,6 +6,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -15,6 +18,12 @@ import {
 } from "@/components/ui/card";
 import { news } from "@/data/news";
 
+export const metadata: Metadata = createMetadata({
+  title: "Actualités & ressources",
+  description:
+    "Suivez les ressources liées à la sécurité documentaire, à la vérification numérique, à la traçabilité et à la confiance numérique.",
+  pathname: "/actualites",
+});
 export default function ActualitesPage() {
   return (
     <main className="min-h-screen bg-background">

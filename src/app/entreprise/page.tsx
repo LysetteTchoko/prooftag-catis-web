@@ -12,6 +12,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -30,6 +33,12 @@ const pillarIcons = {
   traceability: Network,
 };
 
+export const metadata: Metadata = createMetadata({
+  title: "Entreprise",
+  description:
+    "Découvrez PROOFTAG CATIS, sa mission, sa vision, ses piliers et ses engagements autour de la confiance numérique.",
+  pathname: "/entreprise",
+});
 export default function EntreprisePage() {
   return (
     <main className="min-h-screen bg-background">

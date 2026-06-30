@@ -14,6 +14,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -32,6 +35,12 @@ const expertiseIcons = {
   support: ClipboardCheck,
 };
 
+export const metadata: Metadata = createMetadata({
+  title: "Expertises",
+  description:
+    "Découvrez les expertises PROOFTAG-CATIS : sécurité documentaire, vérification numérique, sécurité routière, analyse de données et accompagnement technique.",
+  pathname: "/expertises",
+});
 export default function ExpertisesPage() {
   return (
     <main className="min-h-screen bg-background">

@@ -1,5 +1,14 @@
 import { PagePlaceholder } from "@/components/shared/page-placeholder";
+import type { Metadata } from "next";
 
+import { createMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = createMetadata({
+  title: "Carrière",
+  description:
+    "Découvrez prochainement les opportunités de collaboration avec PROOFTAG CATIS.",
+  pathname: "/carriere",
+});
 export default function CarrierePage() {
   return (
     <PagePlaceholder

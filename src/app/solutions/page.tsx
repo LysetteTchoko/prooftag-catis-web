@@ -12,6 +12,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -28,6 +31,12 @@ const solutionIcons = {
   doser: ClipboardCheck,
 };
 
+export const metadata: Metadata = createMetadata({
+  title: "Solutions",
+  description:
+    "Découvrez les solutions PROOFTAG-CATIS : Certidocs CT, CT-VERIF et DOSER pour sécuriser, vérifier et tracer les opérations sensibles.",
+  pathname: "/solutions",
+});
 export default function SolutionsPage() {
   return (
     <main className="min-h-screen bg-background">

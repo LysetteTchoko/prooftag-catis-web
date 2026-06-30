@@ -13,6 +13,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -30,6 +33,12 @@ const sectorIcons = {
   data: BarChart3,
 };
 
+export const metadata: Metadata = createMetadata({
+  title: "Secteurs d’application",
+  description:
+    "Découvrez les secteurs dans lesquels les solutions PROOFTAG CATIS peuvent renforcer la sécurité, la vérification et la traçabilité.",
+  pathname: "/secteurs",
+});
 export default function SecteursPage() {
   return (
     <main className="min-h-screen bg-background">

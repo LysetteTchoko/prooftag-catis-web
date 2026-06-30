@@ -5,6 +5,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -36,6 +39,12 @@ const contactCards = [
   },
 ];
 
+export const metadata: Metadata = createMetadata({
+  title: "Contact",
+  description:
+    "Contactez PROOFTAG CATIS pour échanger sur vos besoins en sécurité documentaire, vérification numérique et traçabilité.",
+  pathname: "/contact",
+});
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { createMetadata } from "@/lib/metadata";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,11 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "PROOFTAG-CATIS | Sécurité documentaire et traçabilité numérique",
-  description:
-    "PROOFTAG-CATIS conçoit des solutions numériques pour sécuriser, authentifier et tracer les opérations sensibles.",
-};
+export const metadata: Metadata = createMetadata();
 
 export default function RootLayout({
   children,
