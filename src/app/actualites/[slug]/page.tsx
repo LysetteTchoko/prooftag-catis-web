@@ -110,7 +110,7 @@ export default async function NewsDetailPage({
                     Cette ressource est un contenu éditorial générique préparé
                     pour structurer le module Actualités. Elle pourra être
                     remplacée plus tard par un vrai article officiel validé par
-                    PROOFTAG CATIS.
+                    PROOFTAG-CATIS.
                   </p>
                 </CardContent>
               </Card>
@@ -122,7 +122,7 @@ export default async function NewsDetailPage({
 
                 <CardContent>
                   <p className="text-sm leading-7 text-muted">
-                    Pour en savoir plus sur les solutions PROOFTAG CATIS,
+                    Pour en savoir plus sur les solutions PROOFTAG-CATIS,
                     contactez l’équipe.
                   </p>
 
