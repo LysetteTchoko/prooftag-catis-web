@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Container } from "@/components/layout/container";
+import { company } from "@/constants/company";
 import { footerNavigation } from "@/constants/navigation";
 
 export function Footer() {
@@ -13,7 +14,7 @@ export function Footer() {
             <Link href="/" className="inline-flex">
               <Image
                 src="/images/brand/prooftag-catis-logo.png"
-                alt="PROOFTAG CATIS"
+                alt={company.name}
                 width={180}
                 height={52}
                 className="h-auto w-[170px]"
@@ -21,14 +22,13 @@ export function Footer() {
             </Link>
 
             <p className="mt-5 max-w-md text-sm leading-7 text-muted">
-              PROOFTAG-CATIS conçoit des solutions numériques pour sécuriser,
-              authentifier et tracer les opérations sensibles.
+              {company.description}
             </p>
 
             <div className="mt-6 space-y-2 text-sm text-muted">
-              <p>Bonapriso, Douala — Cameroun</p>
-              <p>info@prooftagcatis.com</p>
-              <p>+237 699 192 919</p>
+              <p>{company.address}</p>
+              <p>{company.email}</p>
+              <p>{company.phone}</p>
             </div>
           </div>
 
@@ -52,7 +52,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-4 border-t border-border py-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} PROOFTAG CATIS. Tous droits réservés.
+            © {new Date().getFullYear()} {company.name}. Tous droits réservés.
           </p>
 
           <div className="flex gap-5">
