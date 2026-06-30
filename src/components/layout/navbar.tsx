@@ -10,6 +10,7 @@ import { mainNavigation } from "@/constants/navigation";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
 import { cn } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/shared/language-switcher";
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") {
@@ -61,13 +62,7 @@ export function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <button
-              type="button"
-              aria-label="Changer la langue"
-              className="text-sm font-semibold text-muted transition hover:text-primary"
-            >
-              FR / EN
-            </button>
+            <LanguageSwitcher />
 
             <Button asChild size="md">
               <Link href="/contact">Nous contacter</Link>
@@ -117,13 +112,7 @@ export function Navbar() {
               })}
 
               <div className="mt-3 flex items-center justify-between px-3">
-                <button
-                  type="button"
-                  aria-label="Changer la langue"
-                  className="text-sm font-semibold text-muted"
-                >
-                  FR / EN
-                </button>
+                <LanguageSwitcher />
 
                 <Button asChild size="sm">
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
