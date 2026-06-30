@@ -15,6 +15,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -46,6 +49,26 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: ExpertiseDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const expertise = getExpertiseBySlug(slug);
+
+  if (!expertise) {
+    return createMetadata({
+      title: "Expertise introuvable",
+      description: "L’expertise demandée est introuvable.",
+      pathname: "/expertises",
+    });
+  }
+
+  return createMetadata({
+    title: expertise.title,
+    description: expertise.description,
+    pathname: expertise.href,
+  });
+}
 export default async function ExpertiseDetailPage({
   params,
 }: ExpertiseDetailPageProps) {

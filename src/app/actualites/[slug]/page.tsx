@@ -7,6 +7,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -27,6 +30,26 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: NewsDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const item = getNewsBySlug(slug);
+
+  if (!item) {
+    return createMetadata({
+      title: "Ressource introuvable",
+      description: "La ressource demandée est introuvable.",
+      pathname: "/actualites",
+    });
+  }
+
+  return createMetadata({
+    title: item.title,
+    description: item.description,
+    pathname: item.href,
+  });
+}
 export default async function NewsDetailPage({
   params,
 }: NewsDetailPageProps) {

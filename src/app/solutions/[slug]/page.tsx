@@ -7,6 +7,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -27,6 +30,26 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: SolutionDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const solution = getSolutionBySlug(slug);
+
+  if (!solution) {
+    return createMetadata({
+      title: "Solution introuvable",
+      description: "La solution demandée est introuvable.",
+      pathname: "/solutions",
+    });
+  }
+
+  return createMetadata({
+    title: solution.name,
+    description: solution.description,
+    pathname: solution.href,
+  });
+}
 export default async function SolutionDetailPage({
   params,
 }: SolutionDetailPageProps) {

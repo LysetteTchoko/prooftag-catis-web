@@ -14,6 +14,9 @@ import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+import { createMetadata } from "@/lib/metadata";
 import {
   Card,
   CardContent,
@@ -41,6 +44,26 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: SectorDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const sector = getSectorBySlug(slug);
+
+  if (!sector) {
+    return createMetadata({
+      title: "Secteur introuvable",
+      description: "Le secteur demandé est introuvable.",
+      pathname: "/secteurs",
+    });
+  }
+
+  return createMetadata({
+    title: sector.title,
+    description: sector.description,
+    pathname: sector.href,
+  });
+}
 export default async function SectorDetailPage({
   params,
 }: SectorDetailPageProps) {
