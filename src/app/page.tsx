@@ -1,4 +1,5 @@
 import { HomeChallenges } from "@/components/sections/home-challenges";
+import { HomeCTA } from "@/components/sections/home-cta";
 import { HomeExpertises } from "@/components/sections/home-expertises";
 import { HomeHero } from "@/components/sections/home-hero";
 import { HomeProcess } from "@/components/sections/home-process";
@@ -12,6 +13,7 @@ export default function Home() {
       <HomeSolutions />
       <HomeExpertises />
       <HomeProcess />
+      <HomeCTA />
     </main>
   );
 }
