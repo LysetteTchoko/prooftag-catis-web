@@ -38,7 +38,7 @@ export default function ExpertisesPage() {
       <PageHeader
         eyebrow="Expertises"
         title="Des expertises au service de la sécurité et de la confiance numérique."
-        description="PROOFTAG CATIS combine sécurité documentaire, vérification numérique, traçabilité, analyse de données et accompagnement technique pour répondre aux besoins des environnements sensibles."
+        description="PROOFTAG-CATIS combine sécurité documentaire, vérification numérique, traçabilité, analyse de données et accompagnement technique pour répondre aux besoins des environnements sensibles."
       />
 
       <Section spacing="md">
