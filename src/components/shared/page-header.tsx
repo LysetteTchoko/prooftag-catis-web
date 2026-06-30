@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ export function PageHeader({
       className={cn("border-b border-border bg-surface", className)}
     >
       <Container size="md">
+        <Breadcrumbs />
         {eyebrow ? <Badge variant="accent">{eyebrow}</Badge> : null}
 
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
