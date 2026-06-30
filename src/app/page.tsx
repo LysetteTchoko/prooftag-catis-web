@@ -1,3 +1,4 @@
+import { HomeCertidocsFocus } from "@/components/sections/home-certidocs-focus";
 import { HomeChallenges } from "@/components/sections/home-challenges";
 import { HomeCTA } from "@/components/sections/home-cta";
 import { HomeExpertises } from "@/components/sections/home-expertises";
@@ -14,6 +15,7 @@ export default function Home() {
       <HomeHero />
       <HomeChallenges />
       <HomeSolutions />
+      <HomeCertidocsFocus />
       <HomeExpertises />
       <HomeSectors />
       <HomeProcess />
