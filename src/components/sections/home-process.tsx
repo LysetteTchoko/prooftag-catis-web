@@ -34,7 +34,7 @@ export function HomeProcess() {
             />
 
             <div className="mt-8 rounded-xl border border-border bg-surface p-6 shadow-card">
-              <Badge variant="primary">Méthode PROOFTAG CATIS</Badge>
+              <Badge variant="primary">Méthode PROOFTAG-CATIS</Badge>
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 Cette approche permet de créer un lien clair entre les documents,

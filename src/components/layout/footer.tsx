@@ -21,7 +21,7 @@ export function Footer() {
             </Link>
 
             <p className="mt-5 max-w-md text-sm leading-7 text-muted">
-              PROOFTAG CATIS conçoit des solutions numériques pour sécuriser,
+              PROOFTAG-CATIS conçoit des solutions numériques pour sécuriser,
               authentifier et tracer les opérations sensibles.
             </p>
 
