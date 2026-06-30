@@ -5,6 +5,7 @@ import { HomeHero } from "@/components/sections/home-hero";
 import { HomeNews } from "@/components/sections/home-news";
 import { HomePartners } from "@/components/sections/home-partners";
 import { HomeProcess } from "@/components/sections/home-process";
+import { HomeSectors } from "@/components/sections/home-sectors";
 import { HomeSolutions } from "@/components/sections/home-solutions";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <HomeChallenges />
       <HomeSolutions />
       <HomeExpertises />
+      <HomeSectors />
       <HomeProcess />
       <HomePartners />
       <HomeNews />
