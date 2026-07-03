@@ -6,11 +6,16 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-import { mainNavigation } from "@/constants/navigation";
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
-import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
+import { Button } from "@/components/ui/button";
+import { mainNavigation } from "@/constants/navigation";
+import {
+  getLocaleFromPathname,
+  localizePathname,
+  removeLocaleFromPathname,
+} from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") {
@@ -22,13 +27,18 @@ function isActivePath(pathname: string, href: string) {
 
 export function Navbar() {
   const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname);
+  const pathnameWithoutLocale = removeLocaleFromPathname(pathname);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/90 backdrop-blur-xl">
       <Container>
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+          <Link
+            href={localizePathname("/", currentLocale)}
+            className="flex items-center gap-3"
+          >
             <Image
               src="/images/brand/prooftag-catis-logo.png"
               alt="PROOFTAG CATIS"
@@ -41,12 +51,15 @@ export function Navbar() {
 
           <nav className="hidden items-center gap-8 lg:flex">
             {mainNavigation.map((item) => {
-              const isActive = isActivePath(pathname, item.href);
+              const isActive = isActivePath(
+                pathnameWithoutLocale,
+                item.href
+              );
 
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={localizePathname(item.href, currentLocale)}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "text-sm font-medium transition",
@@ -65,7 +78,9 @@ export function Navbar() {
             <LanguageSwitcher />
 
             <Button asChild size="md">
-              <Link href="/contact">Nous contacter</Link>
+              <Link href={localizePathname("/contact", currentLocale)}>
+                Nous contacter
+              </Link>
             </Button>
           </div>
 
@@ -91,12 +106,15 @@ export function Navbar() {
           <div className="min-h-0">
             <nav className="flex flex-col gap-2 border-t border-border pt-4">
               {mainNavigation.map((item) => {
-                const isActive = isActivePath(pathname, item.href);
+                const isActive = isActivePath(
+                  pathnameWithoutLocale,
+                  item.href
+                );
 
                 return (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={localizePathname(item.href, currentLocale)}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
                       "rounded-md px-3 py-3 text-sm font-medium transition",
@@ -115,7 +133,10 @@ export function Navbar() {
                 <LanguageSwitcher />
 
                 <Button asChild size="sm">
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <Link
+                    href={localizePathname("/contact", currentLocale)}
+                    onClick={() => setIsOpen(false)}
+                  >
                     Contact
                   </Link>
                 </Button>

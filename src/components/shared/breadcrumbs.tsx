@@ -4,6 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Home } from "lucide-react";
 
+import {
+  getLocaleFromPathname,
+  localizePathname,
+  removeLocaleFromPathname,
+} from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const segmentLabels: Record<string, string> = {
@@ -35,8 +40,7 @@ const segmentLabels: Record<string, string> = {
   "enjeux-securite-documentaire": "Enjeux de la sécurité documentaire",
   "verification-numerique-processus-sensibles":
     "Vérification numérique dans les processus sensibles",
-  "tracabilite-donnees-operations-critiques":
-    "Traçabilité et données",
+  "tracabilite-donnees-operations-critiques": "Traçabilité et données",
   "confiance-numerique-environnements-reglementes":
     "Confiance numérique",
 };
@@ -57,17 +61,19 @@ type BreadcrumbsProps = {
 
 export function Breadcrumbs({ className }: BreadcrumbsProps) {
   const pathname = usePathname();
-  const segments = pathname.split("/").filter(Boolean);
+  const currentLocale = getLocaleFromPathname(pathname);
+  const pathnameWithoutLocale = removeLocaleFromPathname(pathname);
+  const segments = pathnameWithoutLocale.split("/").filter(Boolean);
 
   if (segments.length === 0) {
     return null;
   }
 
   const items = segments.map((segment, index) => {
-    const href = `/${segments.slice(0, index + 1).join("/")}`;
+    const hrefWithoutLocale = `/${segments.slice(0, index + 1).join("/")}`;
 
     return {
-      href,
+      href: localizePathname(hrefWithoutLocale, currentLocale),
       label: formatSegment(segment),
       isLast: index === segments.length - 1,
     };
@@ -82,7 +88,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
       )}
     >
       <Link
-        href="/"
+        href={localizePathname("/", currentLocale)}
         className="inline-flex items-center gap-2 transition hover:text-primary"
       >
         <Home className="h-4 w-4" />
@@ -94,17 +100,11 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
           <ChevronRight className="h-4 w-4 text-muted" aria-hidden="true" />
 
           {item.isLast ? (
-            <span
-              aria-current="page"
-              className="font-medium text-foreground"
-            >
+            <span aria-current="page" className="font-medium text-foreground">
               {item.label}
             </span>
           ) : (
-            <Link
-              href={item.href}
-              className="transition hover:text-primary"
-            >
+            <Link href={item.href} className="transition hover:text-primary">
               {item.label}
             </Link>
           )}
