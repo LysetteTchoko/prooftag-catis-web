@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,7 +15,17 @@ import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { certidocsHighlights, certidocsSteps } from "@/data/certidocs";
+import {
+  certidocsFocusContent,
+  certidocsHighlights,
+  certidocsSteps,
+} from "@/data/home-certidocs-focus";
+import { useLocale } from "@/hooks/use-locale";
+import {
+  getLocalizedString,
+  localizePathname,
+  type LocalizedString,
+} from "@/lib/i18n";
 
 const certidocsIcons = {
   document: FileCheck2,
@@ -23,15 +35,21 @@ const certidocsIcons = {
 };
 
 export function HomeCertidocsFocus() {
+  const locale = useLocale();
+
+  const t = (value: LocalizedString) => {
+    return getLocalizedString(value, locale);
+  };
+
   return (
     <Section spacing="md" className="bg-surface">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
           <div>
             <SectionHeader
-              eyebrow="Focus solution"
-              title="Certidocs CT, une solution phare pour le contrôle technique."
-              description="Certidocs CT accompagne la sécurisation, la vérification et la traçabilité des opérations liées au contrôle technique automobile."
+              eyebrow={t(certidocsFocusContent.eyebrow)}
+              title={t(certidocsFocusContent.title)}
+              description={t(certidocsFocusContent.description)}
             />
 
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -39,17 +57,17 @@ export function HomeCertidocsFocus() {
                 const Icon = certidocsIcons[item.icon];
 
                 return (
-                  <Card key={item.title} className="h-full p-6">
+                  <Card key={item.icon} className="h-full p-6">
                     <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
                       <Icon className="h-5 w-5" />
                     </div>
 
                     <h3 className="mt-5 text-base font-bold text-foreground">
-                      {item.title}
+                      {t(item.title)}
                     </h3>
 
                     <p className="mt-3 text-sm leading-7 text-muted">
-                      {item.description}
+                      {t(item.description)}
                     </p>
                   </Card>
                 );
@@ -65,17 +83,15 @@ export function HomeCertidocsFocus() {
                 variant="outline"
                 className="border-white/30 bg-white/10 text-white"
               >
-                Solution centrale
+                {t(certidocsFocusContent.centralLabel)}
               </Badge>
 
               <h3 className="mt-6 text-3xl font-bold tracking-tight">
-                Un parcours clair : structurer, sécuriser, vérifier, tracer.
+                {t(certidocsFocusContent.cardTitle)}
               </h3>
 
               <p className="mt-5 text-sm leading-7 text-white/80">
-                Certidocs CT permet de mieux encadrer les informations sensibles
-                liées au contrôle technique, afin de renforcer la confiance entre
-                les différents acteurs du processus.
+                {t(certidocsFocusContent.cardDescription)}
               </p>
 
               <div className="mt-8 space-y-4">
@@ -91,11 +107,11 @@ export function HomeCertidocsFocus() {
 
                       <div>
                         <p className="text-sm font-semibold text-white">
-                          {step.title}
+                          {t(step.title)}
                         </p>
 
                         <p className="mt-1 text-sm leading-6 text-white/75">
-                          {step.description}
+                          {t(step.description)}
                         </p>
                       </div>
                     </div>
@@ -109,8 +125,13 @@ export function HomeCertidocsFocus() {
                   size="lg"
                   className="bg-white text-primary hover:bg-white/90"
                 >
-                  <Link href="/solutions/certidocs-ct">
-                    Découvrir Certidocs CT
+                  <Link
+                    href={localizePathname(
+                      "/solutions/certidocs-ct",
+                      locale
+                    )}
+                  >
+                    {t(certidocsFocusContent.cta)}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
