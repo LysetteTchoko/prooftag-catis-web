@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BarChart3,
   CarFront,
@@ -17,7 +19,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { homeExpertises } from "@/data/expertises";
+import {
+  homeExpertisesContent,
+  homeExpertisesItems,
+} from "@/data/home-expertises";
+import { useLocale } from "@/hooks/use-locale";
+import {
+  getLocalizedString,
+  type LocalizedString,
+} from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const expertiseIcons = {
@@ -29,28 +39,33 @@ const expertiseIcons = {
 };
 
 export function HomeExpertises() {
+  const locale = useLocale();
+
+  const t = (value: LocalizedString) => {
+    return getLocalizedString(value, locale);
+  };
+
   return (
     <Section spacing="md" className="bg-surface">
       <Container>
         <SectionHeader
-          eyebrow="Nos expertises"
-          title="Une expertise au service de la sécurité, de la confiance et de la performance."
-          description="PROOFTAG CATIS combine sécurité documentaire, outils numériques, vérification et analyse de données pour répondre aux besoins des environnements sensibles."
+          eyebrow={t(homeExpertisesContent.eyebrow)}
+          title={t(homeExpertisesContent.title)}
+          description={t(homeExpertisesContent.description)}
           align="center"
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {homeExpertises.map((expertise) => {
-            const Icon =
-              expertiseIcons[expertise.icon as keyof typeof expertiseIcons];
+          {homeExpertisesItems.map((expertise) => {
+            const Icon = expertiseIcons[expertise.icon];
 
             return (
               <Card
-                key={expertise.title}
+                key={expertise.icon}
                 className={cn(
                   "h-full",
                   expertise.featured &&
-                    "lg:col-span-2 border-primary/20 bg-gradient-to-br from-surface to-primary/5"
+                    "border-primary/20 bg-gradient-to-br from-surface to-primary/5 lg:col-span-2"
                 )}
               >
                 <CardHeader>
@@ -60,21 +75,27 @@ export function HomeExpertises() {
                     </div>
 
                     {expertise.featured ? (
-                      <Badge variant="primary">Expertise clé</Badge>
+                      <Badge variant="primary">
+                        {t(homeExpertisesContent.featuredBadge)}
+                      </Badge>
                     ) : null}
                   </div>
 
-                  <CardTitle className="mt-6">{expertise.title}</CardTitle>
+                  <CardTitle className="mt-6">
+                    {t(expertise.title)}
+                  </CardTitle>
 
-                  <CardDescription>{expertise.description}</CardDescription>
+                  <CardDescription>
+                    {t(expertise.description)}
+                  </CardDescription>
                 </CardHeader>
 
                 <CardContent>
                   <ul className="space-y-3 text-sm text-muted">
                     {expertise.points.map((point) => (
-                      <li key={point} className="flex items-center gap-3">
+                      <li key={t(point)} className="flex items-center gap-3">
                         <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                        {point}
+                        {t(point)}
                       </li>
                     ))}
                   </ul>
