@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Building2,
   CarFront,
@@ -10,7 +12,15 @@ import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { homePartners } from "@/data/partners";
+import {
+  homePartnersContent,
+  homePartnersItems,
+} from "@/data/home-partners";
+import { useLocale } from "@/hooks/use-locale";
+import {
+  getLocalizedString,
+  type LocalizedString,
+} from "@/lib/i18n";
 
 const partnerIcons = {
   administration: Building2,
@@ -20,44 +30,50 @@ const partnerIcons = {
 };
 
 export function HomePartners() {
+  const locale = useLocale();
+
+  const t = (value: LocalizedString) => {
+    return getLocalizedString(value, locale);
+  };
+
   return (
     <Section spacing="md" className="bg-surface">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <SectionHeader
-              eyebrow="Partenaires & écosystème"
-              title="Un réseau d’acteurs engagés autour de la confiance numérique."
-              description="PROOFTAG-CATIS s’inscrit dans un environnement où la collaboration avec les acteurs publics, techniques et organisationnels est essentielle pour renforcer la sécurité et la traçabilité."
+              eyebrow={t(homePartnersContent.eyebrow)}
+              title={t(homePartnersContent.title)}
+              description={t(homePartnersContent.description)}
             />
 
             <div className="mt-8 rounded-xl border border-border bg-background p-6">
-              <Badge variant="primary">Approche collaborative</Badge>
+              <Badge variant="primary">
+                {t(homePartnersContent.collaborationLabel)}
+              </Badge>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                La valeur des solutions repose aussi sur leur capacité à
-                s’intégrer dans des processus existants, avec des acteurs
-                identifiés, des responsabilités claires et des données fiables.
+                {t(homePartnersContent.collaborationDescription)}
               </p>
             </div>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {homePartners.map((partner) => {
+            {homePartnersItems.map((partner) => {
               const Icon = partnerIcons[partner.icon];
 
               return (
-                <Card key={partner.title} className="h-full p-6">
+                <Card key={partner.icon} className="h-full p-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <Icon className="h-6 w-6" />
                   </div>
 
                   <h3 className="mt-6 text-lg font-bold text-foreground">
-                    {partner.title}
+                    {t(partner.title)}
                   </h3>
 
                   <p className="mt-3 text-sm leading-7 text-muted">
-                    {partner.description}
+                    {t(partner.description)}
                   </p>
                 </Card>
               );
