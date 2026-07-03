@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
@@ -19,7 +21,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { homeSolutions } from "@/data/solutions";
+import {
+  homeSolutionsContent,
+  homeSolutionsItems,
+} from "@/data/home-solutions";
+import { useLocale } from "@/hooks/use-locale";
+import {
+  getLocalizedString,
+  localizePathname,
+  type LocalizedString,
+} from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const solutionIcons = {
@@ -29,20 +40,25 @@ const solutionIcons = {
 };
 
 export function HomeSolutions() {
+  const locale = useLocale();
+
+  const t = (value: LocalizedString) => {
+    return getLocalizedString(value, locale);
+  };
+
   return (
     <Section spacing="md">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <SectionHeader
-            eyebrow="Nos solutions"
-            title="Des outils numériques pour sécuriser, vérifier et tracer."
-            description="PROOFTAG CATIS développe des solutions adaptées aux environnements sensibles, avec une attention particulière portée à la fiabilité, à la sécurité et à la traçabilité."
+            eyebrow={t(homeSolutionsContent.eyebrow)}
+            title={t(homeSolutionsContent.title)}
+            description={t(homeSolutionsContent.description)}
           />
 
           <div className="grid gap-6">
-            {homeSolutions.map((solution) => {
-              const Icon =
-                solutionIcons[solution.icon as keyof typeof solutionIcons];
+            {homeSolutionsItems.map((solution) => {
+              const Icon = solutionIcons[solution.icon];
 
               return (
                 <Card
@@ -60,21 +76,26 @@ export function HomeSolutions() {
                       </div>
 
                       <Badge variant={solution.featured ? "primary" : "outline"}>
-                        {solution.tag}
+                        {t(solution.tag)}
                       </Badge>
                     </div>
 
                     <CardTitle className="mt-6">{solution.name}</CardTitle>
 
-                    <CardDescription>{solution.description}</CardDescription>
+                    <CardDescription>
+                      {t(solution.description)}
+                    </CardDescription>
                   </CardHeader>
 
                   <CardContent>
                     <ul className="grid gap-3 text-sm text-muted sm:grid-cols-3">
                       {solution.points.map((point) => (
-                        <li key={point} className="flex items-center gap-2">
+                        <li
+                          key={t(point)}
+                          className="flex items-center gap-2"
+                        >
                           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                          {point}
+                          {t(point)}
                         </li>
                       ))}
                     </ul>
@@ -86,8 +107,8 @@ export function HomeSolutions() {
                       variant={solution.featured ? "primary" : "outline"}
                       size="sm"
                     >
-                      <Link href={solution.href}>
-                        En savoir plus
+                      <Link href={localizePathname(solution.href, locale)}>
+                        {t(homeSolutionsContent.learnMore)}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
