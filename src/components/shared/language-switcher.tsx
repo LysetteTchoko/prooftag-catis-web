@@ -1,6 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import { locales } from "@/constants/locales";
+import {
+  getLocaleFromPathname,
+  localizePathname,
+} from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 type LanguageSwitcherProps = {
@@ -8,7 +15,8 @@ type LanguageSwitcherProps = {
 };
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const currentLocale = "fr";
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname);
 
   return (
     <div
@@ -22,10 +30,10 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         const isActive = locale.code === currentLocale;
 
         return (
-          <button
+          <Link
             key={locale.code}
-            type="button"
-            aria-pressed={isActive}
+            href={localizePathname(pathname, locale.code)}
+            aria-current={isActive ? "page" : undefined}
             className={cn(
               "rounded px-2.5 py-1.5 text-xs font-semibold transition",
               isActive
@@ -34,7 +42,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             )}
           >
             {locale.shortLabel}
-          </button>
+          </Link>
         );
       })}
     </div>
