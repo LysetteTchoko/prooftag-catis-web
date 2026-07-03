@@ -34,3 +34,12 @@ export function localizePathname(pathname: string, locale: Locale) {
 
   return `/${locale}${pathnameWithoutLocale}`;
 }
+
+export type LocalizedString = Record<Locale, string>;
+
+export function getLocalizedString(
+  value: LocalizedString,
+  locale: Locale
+) {
+  return value[locale] ?? value[defaultLocale];
+}

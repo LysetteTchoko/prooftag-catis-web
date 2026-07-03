@@ -1,17 +1,59 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Container } from "@/components/layout/container";
 import { company } from "@/constants/company";
 import { footerNavigation } from "@/constants/navigation";
+import {
+  getLocaleFromPathname,
+  getLocalizedString,
+  localizePathname,
+  type LocalizedString,
+} from "@/lib/i18n";
+
+const footerLabels = {
+  company: {
+    fr: "Entreprise",
+    en: "Company",
+  },
+  expertise: {
+    fr: "Expertises",
+    en: "Expertise",
+  },
+  solutions: {
+    fr: "Solutions",
+    en: "Solutions",
+  },
+  rights: {
+    fr: "Tous droits réservés.",
+    en: "All rights reserved.",
+  },
+  legal: {
+    fr: "Mentions légales",
+    en: "Legal notice",
+  },
+  privacy: {
+    fr: "Confidentialité",
+    en: "Privacy",
+  },
+};
 
 export function Footer() {
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname);
+
   return (
     <footer className="border-t border-border bg-surface">
       <Container>
         <div className="grid gap-10 py-14 lg:grid-cols-[1.4fr_2fr]">
           <div>
-            <Link href="/" className="inline-flex">
+            <Link
+              href={localizePathname("/", currentLocale)}
+              className="inline-flex"
+            >
               <Image
                 src="/images/brand/prooftag-catis-logo.png"
                 alt={company.name}
@@ -34,34 +76,44 @@ export function Footer() {
 
           <div className="grid gap-8 sm:grid-cols-3">
             <FooterColumn
-              title="Entreprise"
+              title={footerLabels.company}
               links={footerNavigation.company}
+              locale={currentLocale}
             />
 
             <FooterColumn
-              title="Expertises"
+              title={footerLabels.expertise}
               links={footerNavigation.expertise}
+              locale={currentLocale}
             />
 
             <FooterColumn
-              title="Solutions"
+              title={footerLabels.solutions}
               links={footerNavigation.solutions}
+              locale={currentLocale}
             />
           </div>
         </div>
 
         <div className="flex flex-col gap-4 border-t border-border py-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} {company.name}. Tous droits réservés.
+            © {new Date().getFullYear()} {company.name}.{" "}
+            {getLocalizedString(footerLabels.rights, currentLocale)}
           </p>
 
           <div className="flex gap-5">
-            <Link href="/mentions-legales" className="transition hover:text-primary">
-              Mentions légales
+            <Link
+              href={localizePathname("/mentions-legales", currentLocale)}
+              className="transition hover:text-primary"
+            >
+              {getLocalizedString(footerLabels.legal, currentLocale)}
             </Link>
 
-            <Link href="/confidentialite" className="transition hover:text-primary">
-              Confidentialité
+            <Link
+              href={localizePathname("/confidentialite", currentLocale)}
+              className="transition hover:text-primary"
+            >
+              {getLocalizedString(footerLabels.privacy, currentLocale)}
             </Link>
           </div>
         </div>
@@ -71,28 +123,29 @@ export function Footer() {
 }
 
 type FooterColumnProps = {
-  title: string;
+  title: LocalizedString;
   links: {
-    label: string;
+    label: LocalizedString;
     href: string;
   }[];
+  locale: "fr" | "en";
 };
 
-function FooterColumn({ title, links }: FooterColumnProps) {
+function FooterColumn({ title, links, locale }: FooterColumnProps) {
   return (
     <div>
       <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">
-        {title}
+        {getLocalizedString(title, locale)}
       </h3>
 
       <ul className="mt-5 space-y-3">
         {links.map((link) => (
           <li key={link.href}>
             <Link
-              href={link.href}
+              href={localizePathname(link.href, locale)}
               className="text-sm text-muted transition hover:text-primary"
             >
-              {link.label}
+              {getLocalizedString(link.label, locale)}
             </Link>
           </li>
         ))}

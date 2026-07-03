@@ -11,48 +11,123 @@ import {
 } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const segmentLabels: Record<string, string> = {
-  entreprise: "Entreprise",
-  expertises: "Expertises",
-  solutions: "Solutions",
-  secteurs: "Secteurs",
-  actualites: "Actualités",
-  contact: "Contact",
-  carriere: "Carrière",
-  "mentions-legales": "Mentions légales",
-  confidentialite: "Confidentialité",
+const segmentLabels: Record<string, { fr: string; en: string }> = {
+  entreprise: {
+    fr: "Entreprise",
+    en: "Company",
+  },
+  expertises: {
+    fr: "Expertises",
+    en: "Expertise",
+  },
+  solutions: {
+    fr: "Solutions",
+    en: "Solutions",
+  },
+  secteurs: {
+    fr: "Secteurs",
+    en: "Sectors",
+  },
+  actualites: {
+    fr: "Actualités",
+    en: "News",
+  },
+  contact: {
+    fr: "Contact",
+    en: "Contact",
+  },
+  carriere: {
+    fr: "Carrière",
+    en: "Careers",
+  },
+  "mentions-legales": {
+    fr: "Mentions légales",
+    en: "Legal notice",
+  },
+  confidentialite: {
+    fr: "Confidentialité",
+    en: "Privacy",
+  },
 
-  "certidocs-ct": "Certidocs CT",
-  "ct-verif": "CT-VERIF",
-  doser: "DOSER",
+  "certidocs-ct": {
+    fr: "Certidocs CT",
+    en: "Certidocs CT",
+  },
+  "ct-verif": {
+    fr: "CT-VERIF",
+    en: "CT-VERIF",
+  },
+  doser: {
+    fr: "DOSER",
+    en: "DOSER",
+  },
 
-  "securite-documentaire": "Sécurité documentaire",
-  "securite-routiere": "Sécurité routière",
-  "verification-numerique": "Vérification numérique",
-  "analyse-donnees": "Analyse de données",
-  "support-accompagnement": "Support & accompagnement",
+  "securite-documentaire": {
+    fr: "Sécurité documentaire",
+    en: "Document security",
+  },
+  "securite-routiere": {
+    fr: "Sécurité routière",
+    en: "Road safety",
+  },
+  "verification-numerique": {
+    fr: "Vérification numérique",
+    en: "Digital verification",
+  },
+  "analyse-donnees": {
+    fr: "Analyse de données",
+    en: "Data analysis",
+  },
+  "support-accompagnement": {
+    fr: "Support & accompagnement",
+    en: "Support & guidance",
+  },
 
-  "administrations-publiques": "Administrations publiques",
-  "transport-mobilite": "Transport & mobilité",
-  "organisations-reglementees": "Organisations réglementées",
-  "donnees-pilotage": "Données & pilotage",
+  "administrations-publiques": {
+    fr: "Administrations publiques",
+    en: "Public administrations",
+  },
+  "transport-mobilite": {
+    fr: "Transport & mobilité",
+    en: "Transport & mobility",
+  },
+  "organisations-reglementees": {
+    fr: "Organisations réglementées",
+    en: "Regulated organizations",
+  },
+  "donnees-pilotage": {
+    fr: "Données & pilotage",
+    en: "Data & management",
+  },
 
-  "enjeux-securite-documentaire": "Enjeux de la sécurité documentaire",
-  "verification-numerique-processus-sensibles":
-    "Vérification numérique dans les processus sensibles",
-  "tracabilite-donnees-operations-critiques": "Traçabilité et données",
-  "confiance-numerique-environnements-reglementes":
-    "Confiance numérique",
+  "enjeux-securite-documentaire": {
+    fr: "Enjeux de la sécurité documentaire",
+    en: "Document security challenges",
+  },
+  "verification-numerique-processus-sensibles": {
+    fr: "Vérification numérique dans les processus sensibles",
+    en: "Digital verification in sensitive processes",
+  },
+  "tracabilite-donnees-operations-critiques": {
+    fr: "Traçabilité et données",
+    en: "Traceability and data",
+  },
+  "confiance-numerique-environnements-reglementes": {
+    fr: "Confiance numérique",
+    en: "Digital trust",
+  },
 };
+function formatSegment(segment: string, locale: "fr" | "en") {
+  const label = segmentLabels[segment];
 
-function formatSegment(segment: string) {
-  return (
-    segmentLabels[segment] ??
-    segment
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ")
-  );
+  if (label) {
+    return label[locale];
+  }
+
+  return segment
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
 type BreadcrumbsProps = {
@@ -74,7 +149,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
 
     return {
       href: localizePathname(hrefWithoutLocale, currentLocale),
-      label: formatSegment(segment),
+      label: formatSegment(segment, currentLocale),
       isLast: index === segments.length - 1,
     };
   });
@@ -92,7 +167,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
         className="inline-flex items-center gap-2 transition hover:text-primary"
       >
         <Home className="h-4 w-4" />
-        Accueil
+        {currentLocale === "fr" ? "Accueil" : "Home"}
       </Link>
 
       {items.map((item) => (

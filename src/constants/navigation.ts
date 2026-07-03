@@ -1,71 +1,116 @@
 export const mainNavigation = [
   {
-    label: "Entreprise",
+    label: {
+      fr: "Entreprise",
+      en: "Company",
+    },
     href: "/entreprise",
   },
   {
-    label: "Expertises",
+    label: {
+      fr: "Expertises",
+      en: "Expertise",
+    },
     href: "/expertises",
   },
   {
-    label: "Solutions",
+    label: {
+      fr: "Solutions",
+      en: "Solutions",
+    },
     href: "/solutions",
   },
   {
-    label: "Secteurs",
+    label: {
+      fr: "Secteurs",
+      en: "Sectors",
+    },
     href: "/secteurs",
   },
   {
-    label: "Actualités",
+    label: {
+      fr: "Actualités",
+      en: "News",
+    },
     href: "/actualites",
   },
   {
-    label: "Contact",
+    label: {
+      fr: "Contact",
+      en: "Contact",
+    },
     href: "/contact",
   },
-];
+] as const;
 
 export const footerNavigation = {
   company: [
     {
-      label: "À propos",
+      label: {
+        fr: "À propos",
+        en: "About",
+      },
       href: "/entreprise",
     },
     {
-      label: "Carrière",
+      label: {
+        fr: "Carrière",
+        en: "Careers",
+      },
       href: "/carriere",
     },
     {
-      label: "Actualités",
+      label: {
+        fr: "Actualités",
+        en: "News",
+      },
       href: "/actualites",
     },
   ],
   expertise: [
     {
-      label: "Sécurité documentaire",
+      label: {
+        fr: "Sécurité documentaire",
+        en: "Document security",
+      },
       href: "/expertises/securite-documentaire",
     },
     {
-      label: "Sécurité routière",
+      label: {
+        fr: "Sécurité routière",
+        en: "Road safety",
+      },
       href: "/expertises/securite-routiere",
     },
     {
-      label: "Analyse de données",
+      label: {
+        fr: "Analyse de données",
+        en: "Data analysis",
+      },
       href: "/expertises/analyse-donnees",
     },
   ],
   solutions: [
     {
-      label: "Certidocs CT",
+      label: {
+        fr: "Certidocs CT",
+        en: "Certidocs CT",
+      },
       href: "/solutions/certidocs-ct",
     },
     {
-      label: "CT-VERIF",
+      label: {
+        fr: "CT-VERIF",
+        en: "CT-VERIF",
+      },
       href: "/solutions/ct-verif",
     },
     {
-      label: "DOSER",
+      label: {
+        fr: "DOSER",
+        en: "DOSER",
+      },
       href: "/solutions/doser",
     },
   ],
-};
+} as const;

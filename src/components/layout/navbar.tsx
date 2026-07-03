@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { mainNavigation } from "@/constants/navigation";
 import {
   getLocaleFromPathname,
+  getLocalizedString,
   localizePathname,
   removeLocaleFromPathname,
 } from "@/lib/i18n";
@@ -68,7 +69,7 @@ export function Navbar() {
                       : "text-muted hover:text-primary"
                   )}
                 >
-                  {item.label}
+                  {getLocalizedString(item.label, currentLocale)}
                 </Link>
               );
             })}
@@ -79,7 +80,7 @@ export function Navbar() {
 
             <Button asChild size="md">
               <Link href={localizePathname("/contact", currentLocale)}>
-                Nous contacter
+               {currentLocale === "fr" ? "Nous contacter" : "Contact us"} 
               </Link>
             </Button>
           </div>
@@ -124,7 +125,7 @@ export function Navbar() {
                     )}
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.label}
+                    {getLocalizedString(item.label, currentLocale)}
                   </Link>
                 );
               })}
@@ -137,7 +138,7 @@ export function Navbar() {
                     href={localizePathname("/contact", currentLocale)}
                     onClick={() => setIsOpen(false)}
                   >
-                    Contact
+                    {currentLocale === "fr" ? "Contact" : "Contact"}
                   </Link>
                 </Button>
               </div>
