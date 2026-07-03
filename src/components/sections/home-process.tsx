@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BarChart3,
   FileCheck2,
@@ -10,7 +12,15 @@ import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { homeProcessSteps } from "@/data/process";
+import {
+  homeProcessContent,
+  homeProcessSteps,
+} from "@/data/home-process";
+import { useLocale } from "@/hooks/use-locale";
+import {
+  getLocalizedString,
+  type LocalizedString,
+} from "@/lib/i18n";
 
 const processIcons = {
   secure: ShieldCheck,
@@ -20,6 +30,12 @@ const processIcons = {
 };
 
 export function HomeProcess() {
+  const locale = useLocale();
+
+  const t = (value: LocalizedString) => {
+    return getLocalizedString(value, locale);
+  };
+
   return (
     <Section spacing="md" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(20,165,245,0.12),transparent_35%)]" />
@@ -28,18 +44,18 @@ export function HomeProcess() {
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <SectionHeader
-              eyebrow="Notre approche"
-              title="Un processus pensé pour renforcer la confiance."
-              description="De la sécurisation du document jusqu’à l’exploitation des données, chaque étape vise à rendre les opérations plus fiables, vérifiables et traçables."
+              eyebrow={t(homeProcessContent.eyebrow)}
+              title={t(homeProcessContent.title)}
+              description={t(homeProcessContent.description)}
             />
 
             <div className="mt-8 rounded-xl border border-border bg-surface p-6 shadow-card">
-              <Badge variant="primary">Méthode PROOFTAG-CATIS</Badge>
+              <Badge variant="primary">
+                {t(homeProcessContent.methodLabel)}
+              </Badge>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                Cette approche permet de créer un lien clair entre les documents,
-                les opérations, les utilisateurs autorisés et les données utiles
-                au pilotage.
+                {t(homeProcessContent.methodDescription)}
               </p>
             </div>
           </div>
@@ -67,12 +83,12 @@ export function HomeProcess() {
                         </span>
 
                         <h3 className="text-xl font-bold text-foreground">
-                          {step.title}
+                          {t(step.title)}
                         </h3>
                       </div>
 
                       <p className="mt-3 text-sm leading-7 text-muted">
-                        {step.description}
+                        {t(step.description)}
                       </p>
                     </div>
                   </div>
