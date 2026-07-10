@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Newspaper } from "lucide-react";
 
@@ -13,54 +15,71 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { homeNews } from "@/data/news";
+import {
+  homeNewsContent,
+  homeNewsItems,
+} from "@/data/home-news";
+import { useLocale } from "@/hooks/use-locale";
+import {
+  getLocalizedString,
+  localizePathname,
+  type LocalizedString,
+} from "@/lib/i18n";
 
 export function HomeNews() {
+  const locale = useLocale();
+
+  const t = (value: LocalizedString) => {
+    return getLocalizedString(value, locale);
+  };
+
   return (
     <Section spacing="md">
       <Container>
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
-            eyebrow="Actualités & ressources"
-            title="Suivre les sujets liés à la sécurité et à la confiance numérique."
-            description="Cette section préparera les contenus éditoriaux du site : articles, annonces, ressources et informations utiles."
+            eyebrow={t(homeNewsContent.eyebrow)}
+            title={t(homeNewsContent.title)}
+            description={t(homeNewsContent.description)}
           />
 
           <Button asChild variant="outline">
-            <Link href="/actualites">
-              Toutes les actualités
+            <Link href={localizePathname("/actualites", locale)}>
+              {t(homeNewsContent.allNews)}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {homeNews.map((news) => (
-            <Card key={news.title} className="flex h-full flex-col">
+          {homeNewsItems.map((news) => (
+            <Card key={news.href} className="flex h-full flex-col">
               <CardHeader>
                 <div className="mb-5 flex items-center justify-between gap-4">
-                  <Badge variant="outline">{news.category}</Badge>
+                  <Badge variant="outline">{t(news.category)}</Badge>
 
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <Newspaper className="h-5 w-5" />
                   </div>
                 </div>
 
-                <CardTitle className="text-xl">{news.title}</CardTitle>
+                <CardTitle className="text-xl">
+                  {t(news.title)}
+                </CardTitle>
               </CardHeader>
 
               <CardContent className="flex-1">
                 <p className="text-sm leading-7 text-muted">
-                  {news.description}
+                  {t(news.description)}
                 </p>
               </CardContent>
 
               <CardFooter>
                 <Link
-                  href={news.href}
+                  href={localizePathname(news.href, locale)}
                   className="inline-flex items-center text-sm font-semibold text-primary transition hover:text-primary-hover"
                 >
-                  Lire la suite
+                  {t(homeNewsContent.readMore)}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </CardFooter>
