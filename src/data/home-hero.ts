@@ -1,47 +1,67 @@
 export const homeHeroContent = {
   eyebrow: {
-    fr: "Sécurité documentaire & traçabilité numérique",
-    en: "Document security & digital traceability",
+    fr: "PROOFTAG CATIS | Certidocs CT",
+    en: "PROOFTAG CATIS | Certidocs CT",
   },
   title: {
-    fr: "Sécuriser, authentifier et tracer les opérations sensibles.",
-    en: "Secure, authenticate and trace sensitive operations.",
+    fr: "Sécuriser le contrôle technique, de la visite à la vérification terrain.",
+    en: "Secure vehicle inspection, from the visit to field verification.",
   },
   description: {
-    fr: "PROOFTAG-CATIS accompagne les administrations, les centres techniques et les organisations dans la sécurisation des documents, la vérification numérique et la traçabilité des processus critiques.",
-    en: "PROOFTAG-CATIS supports public administrations, technical centers and organizations in securing documents, enabling digital verification and tracing critical processes.",
+    fr: "PROOFTAG CATIS déploie Certidocs CT pour interconnecter les centres de contrôle technique, sécuriser les procès-verbaux et vignettes, faciliter la vérification par QR Code et renforcer la traçabilité des opérations.",
+    en: "PROOFTAG CATIS deploys Certidocs CT to interconnect vehicle inspection centers, secure reports and stickers, enable QR Code verification and strengthen operation traceability.",
   },
   primaryCta: {
-    fr: "Découvrir nos solutions",
-    en: "Explore our solutions",
+    fr: "Découvrir Certidocs CT",
+    en: "Explore Certidocs CT",
   },
   secondaryCta: {
     fr: "Contacter l’équipe",
     en: "Contact the team",
   },
   featuredLabel: {
-    fr: "Solution phare",
-    en: "Flagship solution",
+    fr: "Solution métier",
+    en: "Business solution",
   },
   featuredTitle: {
     fr: "Certidocs CT",
     en: "Certidocs CT",
   },
   featuredDescription: {
-    fr: "Sécurisation et vérification des opérations liées au contrôle technique.",
-    en: "Securing and verifying operations related to technical vehicle inspection.",
+    fr: "Un parcours numérique pour relier les données du centre, le procès-verbal, la vignette sécurisée et le contrôle terrain.",
+    en: "A digital workflow connecting center data, the inspection report, secured sticker and field verification.",
   },
   verifiedLabel: {
-    fr: "Vérifié",
-    en: "Verified",
+    fr: "Traçable",
+    en: "Traceable",
   },
   verificationTitle: {
-    fr: "Vérification numérique",
-    en: "Digital verification",
+    fr: "QR Code + scellé à bulles",
+    en: "QR Code + bubble seal",
   },
   verificationDescription: {
-    fr: "Une approche moderne pour renforcer la confiance dans les documents sensibles.",
-    en: "A modern approach to strengthen trust in sensitive documents.",
+    fr: "Des éléments physiques et numériques pour lutter contre la fraude documentaire.",
+    en: "Physical and digital elements to fight document fraud.",
+  },
+  visualSoftwareAlt: {
+    fr: "Aperçu de l’interface Certidocs CT pour l’enregistrement d’un véhicule",
+    en: "Preview of the Certidocs CT interface for vehicle registration",
+  },
+  visualDocumentAlt: {
+    fr: "Aperçu d’un procès-verbal sécurisé de contrôle technique",
+    en: "Preview of a secured vehicle inspection report",
+  },
+  visualSealAlt: {
+    fr: "Scellé à bulles avec QR Code pour la sécurisation documentaire",
+    en: "Bubble seal with QR Code for document security",
+  },
+  documentPreviewLabel: {
+    fr: "PV & vignette",
+    en: "Report & sticker",
+  },
+  sealPreviewLabel: {
+    fr: "Vérification QR",
+    en: "QR verification",
   },
 } as const;
 
@@ -49,70 +69,70 @@ export const homeHeroTrustItems = [
   {
     icon: "security",
     title: {
-      fr: "Sécurité documentaire",
-      en: "Document security",
+      fr: "Documents sécurisés",
+      en: "Secured documents",
     },
     description: {
-      fr: "Protéger les documents sensibles contre la fraude.",
-      en: "Protect sensitive documents against fraud.",
+      fr: "PV, vignette, QR Code et scellé à bulles dans une même chaîne de confiance.",
+      en: "Report, sticker, QR Code and bubble seal in one trust chain.",
     },
   },
   {
     icon: "verification",
     title: {
-      fr: "Vérification numérique",
-      en: "Digital verification",
+      fr: "Vérification terrain",
+      en: "Field verification",
     },
     description: {
-      fr: "Faciliter l’authentification rapide des informations.",
-      en: "Make information authentication faster and easier.",
+      fr: "Consultation rapide des informations par les agents autorisés.",
+      en: "Fast access to information for authorized agents.",
     },
   },
   {
     icon: "traceability",
     title: {
-      fr: "Traçabilité",
-      en: "Traceability",
+      fr: "Traçabilité des visites",
+      en: "Inspection traceability",
     },
     description: {
-      fr: "Suivre les opérations critiques avec plus de fiabilité.",
-      en: "Track critical operations with greater reliability.",
+      fr: "Données centralisées pour mieux suivre les opérations de contrôle.",
+      en: "Centralized data to better monitor inspection operations.",
     },
   },
 ] as const;
 
 export const homeHeroProcessItems = [
   {
-    icon: "document",
+    icon: "center",
     title: {
-      fr: "Document sécurisé",
-      en: "Secured document",
+      fr: "Centres interconnectés",
+      en: "Interconnected centers",
     },
     description: {
-      fr: "Les informations importantes sont structurées et protégées.",
-      en: "Important information is structured and protected.",
+      fr: "Les données du contrôle technique remontent dans un parcours structuré.",
+      en: "Vehicle inspection data flows through a structured workflow.",
+    },
+  },
+  {
+    icon: "document",
+    title: {
+      fr: "PV et vignette sécurisés",
+      en: "Secured report and sticker",
+    },
+    description: {
+      fr: "La preuve documentaire est produite et protégée après la décision.",
+      en: "Documentary proof is produced and protected after the decision.",
     },
   },
   {
     icon: "qr",
     title: {
-      fr: "Contrôle par QR Code",
-      en: "QR Code verification",
+      fr: "QR Code et contrôle terrain",
+      en: "QR Code and field checks",
     },
     description: {
-      fr: "La vérification devient plus rapide et plus accessible.",
-      en: "Verification becomes faster and more accessible.",
-    },
-  },
-  {
-    icon: "auth",
-    title: {
-      fr: "Authentification fiable",
-      en: "Reliable authentication",
-    },
-    description: {
-      fr: "Les acteurs autorisés peuvent confirmer la validité des données.",
-      en: "Authorized actors can confirm data validity.",
+      fr: "Les informations utiles restent vérifiables par les acteurs habilités.",
+      en: "Useful information remains verifiable by authorized stakeholders.",
     },
   },
 ] as const;

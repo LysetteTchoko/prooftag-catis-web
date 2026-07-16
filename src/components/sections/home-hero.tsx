@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  CarFront,
   FileCheck2,
   QrCode,
   ShieldCheck,
@@ -33,9 +35,9 @@ const trustIcons = {
 };
 
 const processIcons = {
+  center: CarFront,
   document: FileCheck2,
   qr: QrCode,
-  auth: ShieldCheck,
 };
 
 export function HomeHero() {
@@ -46,15 +48,18 @@ export function HomeHero() {
   };
 
   return (
-    <Section spacing="lg" className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(20,165,245,0.18),transparent_35%),radial-gradient(circle_at_top_left,rgba(11,61,145,0.12),transparent_30%)]" />
+    <Section
+      spacing="lg"
+      className="relative overflow-hidden bg-[linear-gradient(135deg,#f7fbff_0%,#eef7ff_52%,#ffffff_100%)]"
+    >
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] xl:grid-cols-[0.95fr_1.05fr]">
           <div>
             <Badge variant="accent">{t(homeHeroContent.eyebrow)}</Badge>
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+            <h1 className="mt-6 max-w-4xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-6xl">
               {t(homeHeroContent.title)}
             </h1>
 
@@ -64,7 +69,12 @@ export function HomeHero() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg">
-                <Link href={localizePathname("/solutions", locale)}>
+                <Link
+                  href={localizePathname(
+                    "/solutions/certidocs-ct",
+                    locale
+                  )}
+                >
                   {t(homeHeroContent.primaryCta)}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -101,62 +111,104 @@ export function HomeHero() {
             </div>
           </div>
 
-          <Card padding="lg" className="relative overflow-hidden">
-            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-accent/10 blur-3xl" />
-
-            <div className="relative">
-              <div className="flex items-start justify-between gap-6 border-b border-border pb-6">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+          <Card
+            padding="none"
+            className="relative mx-auto w-full max-w-xl border-primary/10 bg-background/95 p-4 shadow-2xl sm:p-5 lg:max-w-none"
+          >
+            <div className="rounded-lg border border-border bg-surface">
+              <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase leading-5 tracking-[0.18em] text-accent">
                     {t(homeHeroContent.featuredLabel)}
                   </p>
 
-                  <h2 className="mt-3 text-2xl font-bold text-foreground">
+                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground">
                     {t(homeHeroContent.featuredTitle)}
                   </h2>
 
-                  <p className="mt-2 text-sm leading-6 text-muted">
+                  <p className="mt-2 max-w-md text-sm leading-6 text-muted">
                     {t(homeHeroContent.featuredDescription)}
                   </p>
                 </div>
 
-                <Badge variant="primary">
+                <Badge variant="primary" className="shrink-0">
                   {t(homeHeroContent.verifiedLabel)}
                 </Badge>
               </div>
 
-              <div className="mt-8 space-y-4">
-                {homeHeroProcessItems.map((item) => {
-                  const Icon = processIcons[item.icon];
+              <div className="relative aspect-[16/10] overflow-hidden bg-background">
+                <Image
+                  src="/images/solutions/certidocs-ct-vehicle-registration.png"
+                  alt={t(homeHeroContent.visualSoftwareAlt)}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  preload
+                  className="object-contain p-3"
+                />
+              </div>
+            </div>
 
-                  return (
-                    <HeroProcessItem
-                      key={item.icon}
-                      icon={Icon}
-                      title={t(item.title)}
-                      description={t(item.description)}
-                    />
-                  );
-                })}
+            <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_0.86fr] lg:-mt-8 lg:mx-6">
+              <div className="rounded-lg border border-border bg-background p-3 shadow-xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-surface-muted">
+                  <Image
+                    src="/images/documents/secure-inspection-report-face-a.png"
+                    alt={t(homeHeroContent.visualDocumentAlt)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 28vw"
+                    className="object-contain p-2"
+                  />
+                </div>
+
+                <p className="mt-3 text-sm font-semibold text-foreground">
+                  {t(homeHeroContent.documentPreviewLabel)}
+                </p>
               </div>
 
-              <div className="mt-8 rounded-lg bg-surface-muted p-5">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                    <QrCode className="h-9 w-9" />
+              <div className="rounded-lg border border-border bg-background p-4 shadow-xl">
+                <div className="flex items-center gap-3">
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md bg-surface-muted">
+                    <Image
+                      src="/images/documents/bubble-seal-qr-code.png"
+                      alt={t(homeHeroContent.visualSealAlt)}
+                      fill
+                      sizes="80px"
+                      className="object-contain p-2"
+                    />
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-semibold text-foreground">
-                      {t(homeHeroContent.verificationTitle)}
+                      {t(homeHeroContent.sealPreviewLabel)}
                     </p>
 
                     <p className="mt-1 text-sm leading-6 text-muted">
-                      {t(homeHeroContent.verificationDescription)}
+                      {t(homeHeroContent.verificationTitle)}
                     </p>
                   </div>
                 </div>
+
+                <div className="mt-4 rounded-md bg-primary/10 p-3">
+                  <p className="text-sm leading-6 text-primary">
+                    {t(homeHeroContent.verificationDescription)}
+                  </p>
+                </div>
               </div>
+            </div>
+
+            <div className="mt-5 grid gap-3">
+              {homeHeroProcessItems.map((item) => {
+                const Icon = processIcons[item.icon];
+
+                return (
+                  <HeroProcessItem
+                    key={item.icon}
+                    icon={Icon}
+                    title={t(item.title)}
+                    description={t(item.description)}
+                  />
+                );
+              })}
             </div>
           </Card>
         </div>

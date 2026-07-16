@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { locales } from "@/constants/locales";
 import {
   getLocaleFromPathname,
+  getLocalizedString,
   localizePathname,
 } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -13,6 +14,13 @@ import { cn } from "@/lib/utils";
 type LanguageSwitcherProps = {
   className?: string;
 };
+
+const labels = {
+  aria: {
+    fr: "Sélecteur de langue",
+    en: "Language selector",
+  },
+} as const;
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const pathname = usePathname();
@@ -24,7 +32,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         "inline-flex items-center rounded-md border border-border bg-surface p-1",
         className
       )}
-      aria-label="Sélecteur de langue"
+      aria-label={getLocalizedString(labels.aria, currentLocale)}
     >
       {locales.map((locale) => {
         const isActive = locale.code === currentLocale;

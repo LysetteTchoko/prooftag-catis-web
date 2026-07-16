@@ -30,7 +30,7 @@ export function HomeCTA() {
   return (
     <Section spacing="md" className="bg-surface">
       <Container>
-        <div className="relative overflow-hidden rounded-xl bg-primary p-8 text-primary-foreground shadow-soft md:p-12 lg:p-14">
+        <div className="relative overflow-hidden rounded-xl bg-primary p-6 text-primary-foreground shadow-soft md:p-12 lg:p-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(20,165,245,0.35),transparent_35%)]" />
 
           <div className="relative grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center">
@@ -42,7 +42,7 @@ export function HomeCTA() {
                 {t(homeCtaContent.eyebrow)}
               </Badge>
 
-              <h2 className="mt-6 text-3xl font-bold tracking-tight md:text-5xl">
+              <h2 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
                 {t(homeCtaContent.title)}
               </h2>
 

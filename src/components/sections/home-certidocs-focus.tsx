@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -33,6 +34,11 @@ const certidocsIcons = {
   trace: BadgeCheck,
   trust: ShieldCheck,
 };
+
+const certidocsPreviewAlt = {
+  fr: "Aperçu de l’écran d’enregistrement d’un véhicule dans Certidocs CT",
+  en: "Preview of the vehicle registration screen in Certidocs CT",
+} as const;
 
 export function HomeCertidocsFocus() {
   const locale = useLocale();
@@ -75,7 +81,7 @@ export function HomeCertidocsFocus() {
             </div>
           </div>
 
-          <Card className="relative overflow-hidden border-primary/20 bg-primary p-8 text-primary-foreground shadow-soft md:p-10">
+          <Card className="relative overflow-hidden border-primary/20 bg-primary p-6 text-primary-foreground shadow-soft md:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(20,165,245,0.3),transparent_35%)]" />
 
             <div className="relative">
@@ -86,13 +92,24 @@ export function HomeCertidocsFocus() {
                 {t(certidocsFocusContent.centralLabel)}
               </Badge>
 
-              <h3 className="mt-6 text-3xl font-bold tracking-tight">
+              <h3 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">
                 {t(certidocsFocusContent.cardTitle)}
               </h3>
 
               <p className="mt-5 text-sm leading-7 text-white/80">
                 {t(certidocsFocusContent.cardDescription)}
               </p>
+
+              <div className="mt-8 overflow-hidden rounded-lg border border-white/15 bg-white shadow-soft">
+                <Image
+                  src="/images/solutions/certidocs-ct-vehicle-registration.png"
+                  alt={t(certidocsPreviewAlt)}
+                  width={1279}
+                  height={693}
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="h-auto w-full"
+                />
+              </div>
 
               <div className="mt-8 space-y-4">
                 {certidocsSteps.map((step) => (

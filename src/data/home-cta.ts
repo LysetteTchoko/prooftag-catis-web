@@ -8,8 +8,8 @@ export const homeCtaContent = {
     en: "Do you want to secure your documents or operations?",
   },
   description: {
-    fr: "Échangez avec PROOFTAG-CATIS pour identifier la solution la plus adaptée à vos enjeux de sécurité, de vérification et de traçabilité.",
-    en: "Talk to PROOFTAG-CATIS to identify the solution best suited to your security, verification and traceability challenges.",
+    fr: "Échangez avec PROOFTAG CATIS pour identifier la solution la plus adaptée à vos enjeux de sécurité, de vérification et de traçabilité.",
+    en: "Talk to PROOFTAG CATIS to identify the solution best suited to your security, verification and traceability challenges.",
   },
   primaryCta: {
     fr: "Contacter l’équipe",

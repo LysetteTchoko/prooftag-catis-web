@@ -19,9 +19,9 @@ export const buttonVariants = cva(
           "bg-transparent text-foreground hover:bg-surface-muted",
       },
       size: {
-        sm: "h-9 px-4",
-        md: "h-11 px-5",
-        lg: "h-12 px-6",
+        sm: "min-h-9 px-4 py-2",
+        md: "min-h-11 px-5 py-2.5",
+        lg: "min-h-12 px-6 py-3",
       },
     },
     defaultVariants: {

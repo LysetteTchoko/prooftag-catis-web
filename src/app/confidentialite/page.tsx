@@ -1,62 +1,30 @@
-import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
-import { PageHeader } from "@/components/shared/page-header";
 import type { Metadata } from "next";
 
-import { createMetadata } from "@/lib/metadata";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { company } from "@/constants/company";
+import { PrivacyPageContent } from "@/components/pages/privacy-page-content";
+import { createLocalizedMetadata } from "@/lib/metadata";
+import { getRequestLocale } from "@/lib/request-locale";
 
-export const metadata: Metadata = createMetadata({
-  title: "Confidentialité",
-  description:
-    "Consultez la base de politique de confidentialité du site PROOFTAG CATIS.",
-  pathname: "/confidentialite",
-});
+const pageMetadata = {
+  title: {
+    fr: "Confidentialité",
+    en: "Privacy",
+  },
+  description: {
+    fr: "Consultez les principes de confidentialité appliqués aux informations transmises via le site PROOFTAG CATIS.",
+    en: "View the privacy principles applied to information submitted through the PROOFTAG CATIS website.",
+  },
+} as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+
+  return createLocalizedMetadata({
+    ...pageMetadata,
+    pathname: "/confidentialite",
+    locale,
+  });
+}
+
 export default function ConfidentialitePage() {
-  return (
-    <main className="min-h-screen bg-background">
-      <PageHeader
-        eyebrow="Confidentialité"
-        title="Politique de confidentialité"
-        description="Cette page présente une base de politique de confidentialité qui devra être complétée avant la mise en production."
-      />
-
-      <Section spacing="md">
-        <Container size="md">
-          <Card padding="lg">
-            <CardHeader>
-              <CardTitle>Protection des informations</CardTitle>
-            </CardHeader>
-
-            <CardContent>
-              <div className="space-y-5 text-sm leading-7 text-muted">
-                <p>
-                  {company.name} accorde de l’importance à la confidentialité
-                  des informations transmises via son site internet.
-                </p>
-
-                <p>
-                  Les informations envoyées via le formulaire de contact sont
-                  destinées à permettre un échange professionnel avec l’équipe.
-                </p>
-
-                <p>
-                  Cette page est une base provisoire. Elle devra être complétée
-                  avec les informations exactes concernant la collecte, le
-                  traitement, la conservation et la protection des données avant
-                  la publication officielle du site.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </Container>
-      </Section>
-    </main>
-  );
+  return <PrivacyPageContent />;
 }

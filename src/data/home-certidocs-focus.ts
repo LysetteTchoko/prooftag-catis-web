@@ -5,11 +5,11 @@ export const certidocsFocusContent = {
   },
   title: {
     fr: "Certidocs CT, une solution phare pour le contrôle technique.",
-    en: "Certidocs CT, a flagship solution for technical vehicle inspection.",
+    en: "Certidocs CT, a flagship solution for vehicle inspection.",
   },
   description: {
-    fr: "Certidocs CT accompagne la sécurisation, la vérification et la traçabilité des opérations liées au contrôle technique automobile.",
-    en: "Certidocs CT supports the securing, verification and traceability of operations related to technical vehicle inspection.",
+    fr: "Certidocs CT accompagne la sécurisation, la vérification et la traçabilité des opérations liées au contrôle technique.",
+    en: "Certidocs CT supports the security, verification and traceability of vehicle inspection operations.",
   },
   centralLabel: {
     fr: "Solution centrale",
@@ -20,8 +20,8 @@ export const certidocsFocusContent = {
     en: "A clear flow: structure, secure, verify and trace.",
   },
   cardDescription: {
-    fr: "Certidocs CT permet de mieux encadrer les informations sensibles liées au contrôle technique, afin de renforcer la confiance entre les différents acteurs du processus.",
-    en: "Certidocs CT helps better frame sensitive information related to technical inspection, in order to strengthen trust between the different actors involved in the process.",
+    fr: "Certidocs CT encadre les informations sensibles liées au contrôle technique afin de renforcer la confiance entre les acteurs du processus.",
+    en: "Certidocs CT structures sensitive information related to vehicle inspection to strengthen trust between the actors involved.",
   },
   cta: {
     fr: "Découvrir Certidocs CT",
@@ -38,7 +38,7 @@ export const certidocsHighlights = [
     icon: "document",
     description: {
       fr: "Renforcer la fiabilité des documents liés aux opérations de contrôle technique.",
-      en: "Strengthen the reliability of documents related to technical inspection operations.",
+      en: "Strengthen the reliability of documents related to vehicle inspection operations.",
     },
   },
   {

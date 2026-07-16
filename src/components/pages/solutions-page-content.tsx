@@ -46,8 +46,8 @@ const pageContent = {
     en: "Digital solutions to secure, verify and trace.",
   },
   description: {
-    fr: "PROOFTAG CATIS développe des solutions adaptées aux environnements sensibles, avec une attention particulière portée à la sécurité documentaire, à la vérification numérique et à la traçabilité.",
-    en: "PROOFTAG CATIS develops solutions for sensitive environments, with a strong focus on document security, digital verification and traceability.",
+    fr: "PROOFTAG CATIS développe des solutions pour sécuriser les documents, vérifier les informations et exploiter les données liées aux processus de contrôle.",
+    en: "PROOFTAG CATIS develops solutions to secure documents, verify information and use data related to control processes.",
   },
   discover: {
     fr: "Découvrir",

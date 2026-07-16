@@ -32,7 +32,7 @@ export function SectionHeader({
         </Badge>
       ) : null}
 
-      <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+      <h2 className="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-5xl">
         {title}
       </h2>
 

@@ -8,8 +8,8 @@ export const homeSolutionsContent = {
     en: "Digital tools to secure, verify and trace.",
   },
   description: {
-    fr: "PROOFTAG CATIS développe des solutions adaptées aux environnements sensibles, avec une attention particulière portée à la fiabilité, à la sécurité et à la traçabilité.",
-    en: "PROOFTAG CATIS develops solutions for sensitive environments, with a strong focus on reliability, security and traceability.",
+    fr: "PROOFTAG CATIS développe des solutions adaptées aux environnements où la fiabilité des documents, des données et des contrôles est essentielle.",
+    en: "PROOFTAG CATIS develops solutions for environments where document, data and control reliability is essential.",
   },
   learnMore: {
     fr: "En savoir plus",
@@ -28,21 +28,21 @@ export const homeSolutionsItems = [
     icon: "certidocs",
     featured: true,
     description: {
-      fr: "Solution dédiée à la sécurisation, à la vérification et à la traçabilité des opérations liées au contrôle technique.",
-      en: "A solution dedicated to securing, verifying and tracing operations related to technical vehicle inspection.",
+      fr: "Solution dédiée à l’interconnexion des centres, à la génération des preuves et à la vérification des documents liés au contrôle technique.",
+      en: "A solution dedicated to interconnecting centers, generating evidence and verifying documents related to vehicle inspection.",
     },
     points: [
       {
-        fr: "Documents sécurisés",
-        en: "Secured documents",
+        fr: "PV et vignettes sécurisés",
+        en: "Secured reports and stickers",
       },
       {
         fr: "Vérification par QR Code",
         en: "QR Code verification",
       },
       {
-        fr: "Traçabilité des opérations",
-        en: "Operation traceability",
+        fr: "Traçabilité des visites",
+        en: "Inspection traceability",
       },
     ],
   },
@@ -84,8 +84,8 @@ export const homeSolutionsItems = [
     icon: "doser",
     featured: false,
     description: {
-      fr: "Solution orientée suivi, structuration et exploitation des données pour améliorer la visibilité opérationnelle.",
-      en: "A solution focused on monitoring, structuring and using data to improve operational visibility.",
+      fr: "Solution orientée structuration, suivi et exploitation des données pour améliorer le pilotage opérationnel.",
+      en: "A solution focused on structuring, monitoring and using data to improve operational management.",
     },
     points: [
       {

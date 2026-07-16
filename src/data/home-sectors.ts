@@ -9,7 +9,7 @@ export const homeSectorsContent = {
   },
   description: {
     fr: "Les solutions PROOFTAG CATIS peuvent accompagner différents acteurs confrontés à des enjeux de sécurité documentaire, de vérification numérique et de traçabilité.",
-    en: "PROOFTAG-CATIS solutions can support different actors facing challenges related to document security, digital verification and traceability.",
+    en: "PROOFTAG CATIS solutions can support different actors facing challenges related to document security, digital verification and traceability.",
   },
 } as const;
 
@@ -33,7 +33,7 @@ export const homeSectorsItems = [
     icon: "mobility",
     description: {
       fr: "Fiabilisation des processus liés au contrôle technique, à la conformité et à la circulation des informations.",
-      en: "Making processes related to technical inspection, compliance and information flow more reliable.",
+      en: "Making processes related to vehicle inspection, compliance and information flow more reliable.",
     },
   },
   {

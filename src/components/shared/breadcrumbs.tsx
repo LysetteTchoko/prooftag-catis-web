@@ -6,6 +6,7 @@ import { ChevronRight, Home } from "lucide-react";
 
 import {
   getLocaleFromPathname,
+  getLocalizedString,
   localizePathname,
   removeLocaleFromPathname,
 } from "@/lib/i18n";
@@ -117,6 +118,18 @@ const segmentLabels: Record<string, { fr: string; en: string }> = {
     en: "Digital trust",
   },
 };
+
+const labels = {
+  aria: {
+    fr: "Fil d’Ariane",
+    en: "Breadcrumb",
+  },
+  home: {
+    fr: "Accueil",
+    en: "Home",
+  },
+} as const;
+
 function formatSegment(segment: string, locale: "fr" | "en") {
   const label = segmentLabels[segment];
 
@@ -156,7 +169,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
 
   return (
     <nav
-      aria-label="Fil d’Ariane"
+      aria-label={getLocalizedString(labels.aria, currentLocale)}
       className={cn(
         "mb-6 flex flex-wrap items-center gap-2 text-sm text-muted",
         className
@@ -167,7 +180,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
         className="inline-flex items-center gap-2 transition hover:text-primary"
       >
         <Home className="h-4 w-4" />
-        {currentLocale === "fr" ? "Accueil" : "Home"}
+        {getLocalizedString(labels.home, currentLocale)}
       </Link>
 
       {items.map((item) => (

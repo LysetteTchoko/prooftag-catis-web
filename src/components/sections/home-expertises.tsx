@@ -58,6 +58,7 @@ export function HomeExpertises() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {homeExpertisesItems.map((expertise) => {
             const Icon = expertiseIcons[expertise.icon];
+            const points = expertise.points[locale] ?? expertise.points.fr;
 
             return (
               <Card
@@ -92,10 +93,10 @@ export function HomeExpertises() {
 
                 <CardContent>
                   <ul className="space-y-3 text-sm text-muted">
-                    {expertise.points.map((point) => (
-                      <li key={t(point)} className="flex items-center gap-3">
+                    {points.map((point) => (
+                      <li key={point} className="flex items-center gap-3">
                         <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                        {t(point)}
+                        {point}
                       </li>
                     ))}
                   </ul>

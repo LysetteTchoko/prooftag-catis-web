@@ -4,12 +4,12 @@ export const homeChallengesContent = {
     en: "Solutions designed for your challenges",
   },
   title: {
-    fr: "Des solutions conçues pour des environnements exigeants.",
-    en: "Solutions designed for demanding environments.",
+    fr: "Des solutions conçues pour les environnements où la preuve compte.",
+    en: "Solutions designed for environments where proof matters.",
   },
   description: {
-    fr: "PROOFTAG-CATIS développe des outils numériques fiables pour renforcer la sécurité, la transparence et la performance des opérations sensibles.",
-    en: "PROOFTAG-CATIS develops reliable digital tools to strengthen security, transparency and performance in sensitive operations.",
+    fr: "PROOFTAG CATIS développe des outils numériques fiables pour renforcer la sécurité, la transparence et la performance des processus de contrôle.",
+    en: "PROOFTAG CATIS develops reliable digital tools to strengthen security, transparency and performance in control processes.",
   },
   cardFooterText: {
     fr: "Une réponse numérique adaptée aux besoins de sécurité, d’authentification et de traçabilité.",
@@ -33,7 +33,7 @@ export const homeChallengesItems = [
     icon: "control",
     title: {
       fr: "Centres de contrôle technique",
-      en: "Technical inspection centers",
+      en: "Vehicle inspection centers",
     },
     description: {
       fr: "Digitaliser les opérations, renforcer la conformité et fiabiliser les contrôles.",

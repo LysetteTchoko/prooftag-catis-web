@@ -7,13 +7,25 @@ import {
   solutions,
 } from "@/data/solutions";
 import { getLocalizedString } from "@/lib/i18n";
-import { createMetadata } from "@/lib/metadata";
+import { createLocalizedMetadata, createMetadata } from "@/lib/metadata";
+import { getRequestLocale } from "@/lib/request-locale";
 
 type SolutionDetailPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+const notFoundMetadata = {
+  title: {
+    fr: "Solution introuvable",
+    en: "Solution not found",
+  },
+  description: {
+    fr: "La solution demandée est introuvable.",
+    en: "The requested solution could not be found.",
+  },
+} as const;
 
 export function generateStaticParams() {
   return solutions.map((solution) => ({
@@ -24,21 +36,23 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: SolutionDetailPageProps): Promise<Metadata> {
+  const locale = await getRequestLocale();
   const { slug } = await params;
   const solution = getSolutionBySlug(slug);
 
   if (!solution) {
-    return createMetadata({
-      title: "Solution introuvable",
-      description: "La solution demandée est introuvable.",
+    return createLocalizedMetadata({
+      ...notFoundMetadata,
       pathname: "/solutions",
+      locale,
     });
   }
 
   return createMetadata({
     title: solution.name,
-    description: getLocalizedString(solution.description, "fr"),
+    description: getLocalizedString(solution.description, locale),
     pathname: solution.href,
+    locale,
   });
 }
 
