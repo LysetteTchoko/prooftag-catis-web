@@ -277,30 +277,37 @@ async function sendContactEmail(
     to: string[];
   }
 ) {
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${config.apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: config.from,
-      to: config.to,
-      reply_to: payload.email,
-      subject: `Message site web - ${payload.subject}`,
-      text: createPlainTextEmail(payload),
-      html: createHtmlEmail(payload),
-    }),
-  });
-
-  if (!response.ok) {
-    console.error("Contact form email delivery failed", {
-      status: response.status,
-      body: (await response.text()).slice(0, 500),
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${config.apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: config.from,
+        to: config.to,
+        reply_to: payload.email,
+        subject: `Message site web - ${payload.subject}`,
+        text: createPlainTextEmail(payload),
+        html: createHtmlEmail(payload),
+      }),
     });
-  }
 
-  return response.ok;
+    if (!response.ok) {
+      console.error("Contact form email delivery failed", {
+        status: response.status,
+      });
+    }
+
+    return response.ok;
+  } catch (error) {
+    console.error("Contact form email delivery failed", {
+      reason: error instanceof Error ? error.name : "unknown",
+    });
+
+    return false;
+  }
 }
 
 function createPlainTextEmail(payload: ContactFormPayload) {
