@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
@@ -25,6 +26,7 @@ import {
 } from "@/lib/contact-form";
 import {
   getLocalizedString,
+  localizePathname,
   type LocalizedString,
 } from "@/lib/i18n";
 
@@ -38,8 +40,8 @@ const pageContent = {
     en: "Talk to PROOFTAG CATIS",
   },
   description: {
-    fr: "Contactez l’équipe pour présenter vos besoins en sécurité documentaire, vérification numérique, traçabilité ou contrôle technique.",
-    en: "Contact the team to discuss your needs in document security, digital verification, traceability or vehicle inspection.",
+    fr: "Présentez une demande liée à la sécurité documentaire, à la vérification numérique, à la traçabilité ou au contrôle technique.",
+    en: "Submit a request related to document security, digital verification, traceability or vehicle inspection.",
   },
   cards: [
     {
@@ -49,6 +51,7 @@ const pageContent = {
         en: "Email",
       },
       value: company.email,
+      href: `mailto:${company.email}`,
       description: {
         fr: "Pour les demandes d’information et les échanges professionnels.",
         en: "For information requests and professional exchanges.",
@@ -61,9 +64,10 @@ const pageContent = {
         en: "Phone",
       },
       value: company.phone,
+      href: `tel:${company.phone.replaceAll(" ", "")}`,
       description: {
-        fr: "Pour entrer directement en contact avec l’équipe.",
-        en: "To get directly in touch with the team.",
+        fr: "Pour joindre directement PROOFTAG CATIS.",
+        en: "To reach PROOFTAG CATIS directly.",
       },
     },
     {
@@ -84,8 +88,12 @@ const pageContent = {
     en: "A solution-oriented first contact",
   },
   solutionContactDescription: {
-    fr: "Présentez votre contexte, vos contraintes et vos objectifs. L’équipe pourra ensuite vous orienter vers la solution la plus adaptée.",
-    en: "Describe your context, constraints and goals. The team can then guide you toward the most suitable solution.",
+    fr: "Présentez votre contexte, vos contraintes et vos objectifs afin de faciliter l’analyse de votre demande.",
+    en: "Describe your context, constraints and goals to help assess your request.",
+  },
+  responseNotice: {
+    fr: "Notre équipe vous répondra dans les meilleurs délais.",
+    en: "Our team will get back to you as soon as possible.",
   },
   formBadge: {
     fr: "Formulaire de contact",
@@ -96,8 +104,8 @@ const pageContent = {
     en: "Describe your request",
   },
   formDescription: {
-    fr: "Renseignez les éléments clés de votre demande. Le message sera transmis directement à l’équipe PROOFTAG CATIS.",
-    en: "Enter the key details of your request. The message will be sent directly to the PROOFTAG CATIS team.",
+    fr: "Renseignez les éléments clés de votre demande. Le message sera transmis via le canal officiel du site.",
+    en: "Enter the key details of your request. The message will be sent through the website’s official channel.",
   },
   nameLabel: {
     fr: "Nom complet",
@@ -178,6 +186,14 @@ const pageContent = {
   formNotice: {
     fr: `Vous pouvez aussi écrire directement à ${company.email}.`,
     en: `You can also write directly to ${company.email}.`,
+  },
+  privacyNotice: {
+    fr: "Les informations transmises via ce formulaire sont utilisées uniquement pour répondre à votre demande.",
+    en: "Information submitted through this form is used only to respond to your request.",
+  },
+  privacyLink: {
+    fr: "Consulter la politique de confidentialité",
+    en: "Read the privacy policy",
   },
 } as const;
 
@@ -334,9 +350,18 @@ export function ContactPageContent() {
                     </CardHeader>
 
                     <CardContent>
-                      <p className="text-sm font-semibold text-foreground">
-                        {item.value}
-                      </p>
+                      {"href" in item ? (
+                        <a
+                          href={item.href}
+                          className="text-sm font-semibold text-foreground transition hover:text-primary"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-sm font-semibold text-foreground">
+                          {item.value}
+                        </p>
+                      )}
 
                       <p className="mt-3 text-sm leading-7 text-muted">
                         {t(item.description)}
@@ -360,6 +385,9 @@ export function ContactPageContent() {
                 <CardContent>
                   <p className="text-sm leading-7 text-muted">
                     {t(pageContent.solutionContactDescription)}
+                  </p>
+                  <p className="mt-4 text-sm font-medium leading-7 text-foreground">
+                    {t(pageContent.responseNotice)}
                   </p>
                 </CardContent>
               </Card>
@@ -513,6 +541,16 @@ export function ContactPageContent() {
                     className="text-xs leading-6 text-muted"
                   >
                     {t(pageContent.formNotice)}
+                  </p>
+
+                  <p className="text-xs leading-6 text-muted">
+                    {t(pageContent.privacyNotice)}{" "}
+                    <Link
+                      href={localizePathname("/confidentialite", locale)}
+                      className="font-semibold text-primary transition hover:text-primary-hover"
+                    >
+                      {t(pageContent.privacyLink)}
+                    </Link>
                   </p>
                 </form>
               </CardContent>

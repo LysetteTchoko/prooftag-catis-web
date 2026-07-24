@@ -499,8 +499,8 @@ export const solutions = [
     },
     points: [
       {
-        fr: "Recherche par numéro de plaque",
-        en: "Search by license plate number",
+        fr: "Recherche par plaque ou QR Code",
+        en: "Search by plate or QR Code",
       },
       {
         fr: "Consultation rapide des informations de contrôle",
@@ -562,7 +562,133 @@ export const solutions = [
         fr: "Vérification de la cohérence documentaire",
         en: "Document consistency verification",
       },
+      {
+        fr: "Administrations publiques",
+        en: "Public administrations",
+      },
     ],
+    verificationContent: {
+      eyebrow: {
+        fr: "Ce que CT-VERIF vérifie",
+        en: "What CT-VERIF verifies",
+      },
+      title: {
+        fr: "Des informations essentielles pour confirmer la cohérence d’un contrôle technique.",
+        en: "Essential information to confirm the consistency of a vehicle inspection.",
+      },
+      description: {
+        fr: "CT-VERIF ne remplace pas le jugement d’un agent autorisé. Il apporte un point d’accès numérique pour rapprocher une plaque, un QR Code, une vignette ou un procès-verbal des informations consultables.",
+        en: "CT-VERIF does not replace the judgment of an authorized agent. It provides a digital access point to compare a plate, QR Code, sticker or report with accessible information.",
+      },
+    },
+    verificationChecks: [
+      {
+        title: {
+          fr: "Existence d’un dossier de contrôle",
+          en: "Existence of an inspection record",
+        },
+        description: {
+          fr: "La consultation permet de vérifier si une plaque renvoie à un dossier connu du dispositif de contrôle technique.",
+          en: "The consultation helps verify whether a plate points to a record known by the vehicle inspection system.",
+        },
+      },
+      {
+        title: {
+          fr: "Cohérence plaque, véhicule et document",
+          en: "Plate, vehicle and document consistency",
+        },
+        description: {
+          fr: "Les informations consultées peuvent être comparées avec le véhicule, la vignette ou le procès-verbal présenté.",
+          en: "The consulted information can be compared with the vehicle, sticker or inspection report presented.",
+        },
+      },
+      {
+        title: {
+          fr: "Repères de validité et de contrôle",
+          en: "Validity and inspection markers",
+        },
+        description: {
+          fr: "Le portail fournit des repères utiles pour apprécier le statut de la vérification et orienter le contrôle terrain.",
+          en: "The portal provides useful markers to assess the verification status and guide field checks.",
+        },
+      },
+      {
+        title: {
+          fr: "Incohérences à examiner",
+          en: "Inconsistencies to review",
+        },
+        description: {
+          fr: "En cas d’écart entre le document et les informations consultables, l’agent dispose d’un signal pour approfondir le contrôle.",
+          en: "If the document differs from the accessible information, the agent has a signal to perform further checks.",
+        },
+      },
+    ],
+    verificationVisual: {
+      eyebrow: {
+        fr: "Visuel de principe",
+        en: "Principle visual",
+      },
+      title: {
+        fr: "Une vérification numérique lisible, sans fausse capture officielle.",
+        en: "A readable digital verification flow, without a fake official screen.",
+      },
+      description: {
+        fr: "Cette composition illustre le principe : une plaque ou un QR Code mène à une consultation, puis à un résultat contrôlable par un agent autorisé.",
+        en: "This composition illustrates the principle: a plate or QR Code leads to a consultation, then to a result that an authorized agent can check.",
+      },
+      inputLabel: {
+        fr: "Plaque ou identifiant",
+        en: "Plate or identifier",
+      },
+      inputValue: {
+        fr: "PLAQUE-EXEMPLE",
+        en: "SAMPLE-PLATE",
+      },
+      qrLabel: {
+        fr: "QR Code",
+        en: "QR Code",
+      },
+      statusLabel: {
+        fr: "Résultat à contrôler par agent autorisé",
+        en: "Result to be checked by an authorized agent",
+      },
+      statusValue: {
+        fr: "Cohérence vérifiable",
+        en: "Verifiable consistency",
+      },
+      resultItems: [
+        {
+          title: {
+            fr: "Dossier consultable",
+            en: "Accessible record",
+          },
+          description: {
+            fr: "La plaque ou le QR Code renvoie vers les informations utiles disponibles.",
+            en: "The plate or QR Code points to the useful information available.",
+          },
+        },
+        {
+          title: {
+            fr: "Document rapproché",
+            en: "Document compared",
+          },
+          description: {
+            fr: "Le procès-verbal ou la vignette peut être rapproché des données consultées.",
+            en: "The report or sticker can be compared with the consulted data.",
+          },
+        },
+        {
+          title: {
+            fr: "Décision terrain",
+            en: "Field decision",
+          },
+          description: {
+            fr: "L’agent autorisé confirme la cohérence ou poursuit le contrôle en cas d’anomalie.",
+            en: "The authorized agent confirms consistency or continues the check if an anomaly appears.",
+          },
+        },
+      ],
+    },
     challenge: {
       eyebrow: {
         fr: "Pourquoi CT-VERIF ?",
@@ -626,18 +752,18 @@ export const solutions = [
     workflow: [
       {
         title: {
-          fr: "Saisir la plaque",
-          en: "Enter the plate",
+          fr: "Saisir la plaque ou scanner le QR Code",
+          en: "Enter the plate or scan the QR Code",
         },
         description: {
-          fr: "L’utilisateur renseigne le numéro de plaque du véhicule enregistré lors du contrôle technique, selon le format attendu par le portail.",
-          en: "The user enters the license plate number registered during vehicle inspection, following the format expected by the portal.",
+          fr: "L’utilisateur part d’un identifiant simple : la plaque du véhicule ou un QR Code présent sur un support de vérification.",
+          en: "The user starts from a simple identifier: the vehicle plate or a QR Code shown on a verification medium.",
         },
       },
       {
         title: {
-          fr: "Consulter l’information",
-          en: "Consult information",
+          fr: "Consulter sur mintctv.cm",
+          en: "Consult on mintctv.cm",
         },
         description: {
           fr: "Le portail recherche les données associées afin de fournir les éléments utiles à la vérification.",
@@ -646,18 +772,18 @@ export const solutions = [
       },
       {
         title: {
-          fr: "Comparer sur le terrain",
-          en: "Compare in the field",
+          fr: "Lire le résultat de vérification",
+          en: "Read the verification result",
         },
         description: {
-          fr: "Les informations consultées peuvent être rapprochées du véhicule, de la vignette ou du document présenté.",
-          en: "The consulted information can be compared with the vehicle, the sticker or the document presented.",
+          fr: "Les informations affichées sont rapprochées du véhicule, de la vignette ou du document présenté.",
+          en: "The displayed information is compared with the vehicle, the sticker or the document presented.",
         },
       },
       {
         title: {
-          fr: "Décider plus vite",
-          en: "Decide faster",
+          fr: "Contrôler sur le terrain",
+          en: "Check in the field",
         },
         description: {
           fr: "Les agents et acteurs habilités disposent d’un appui numérique pour confirmer la cohérence ou signaler une anomalie.",
@@ -786,8 +912,8 @@ export const solutions = [
       },
       {
         title: {
-          fr: "Autorités",
-          en: "Authorities",
+          fr: "Administrations et autorités",
+          en: "Administrations and authorities",
         },
         description: {
           fr: "Un outil complémentaire pour renforcer la supervision, la transparence et la cohérence des contrôles.",
@@ -837,25 +963,25 @@ export const solutions = [
     icon: "doser",
     featured: false,
     headline: {
-      fr: "Transformer les données de sécurité routière en décisions fondées sur des preuves.",
-      en: "Turn road safety data into evidence-based decisions.",
+      fr: "Structurer, suivre et piloter les données utiles à la sécurité routière.",
+      en: "Structure, monitor and manage data useful to road safety.",
     },
     description: {
-      fr: "DOSER, Digital Observatory for Safety, Evidence and Road Intelligence, est une plateforme numérique intelligente qui centralise, analyse et valorise les données relatives à la sécurité routière. Elle aide les gouvernements, collectivités, forces de l’ordre, hôpitaux, assurances et chercheurs à mieux comprendre les risques, suivre les accidents et construire des politiques publiques basées sur des données fiables.",
-      en: "DOSER, Digital Observatory for Safety, Evidence and Road Intelligence, is an intelligent digital platform that centralizes, analyzes and turns road safety data into value. It helps governments, local authorities, law enforcement, hospitals, insurers and researchers better understand risks, monitor crashes and build public policies based on reliable data.",
+      fr: "DOSER, Digital Observatory for Safety, Evidence and Road Intelligence, est une solution de structuration, suivi, reporting et pilotage des données liées à la sécurité routière. Selon le périmètre validé, elle peut aider les administrations, collectivités, forces de l’ordre, hôpitaux, assurances et chercheurs à centraliser les informations utiles, suivre les activités et produire des indicateurs d’aide à la décision.",
+      en: "DOSER, Digital Observatory for Safety, Evidence and Road Intelligence, is a solution for structuring, monitoring, reporting and managing road safety data. Depending on the validated scope, it can help administrations, local authorities, law enforcement, hospitals, insurers and researchers centralize useful information, monitor activities and produce decision-support indicators.",
     },
     points: [
       {
-        fr: "Observatoire numérique de sécurité routière",
-        en: "Digital road safety observatory",
+        fr: "Structuration et centralisation des données",
+        en: "Data structuring and centralization",
       },
       {
-        fr: "Cartographie SIG, tableaux de bord et reporting",
-        en: "GIS mapping, dashboards and reporting",
+        fr: "Suivi opérationnel, reporting et statistiques",
+        en: "Operational monitoring, reporting and statistics",
       },
       {
-        fr: "Analyses prédictives et aide à la décision",
-        en: "Predictive analytics and decision support",
+        fr: "Modules avancés selon périmètre validé",
+        en: "Advanced modules depending on validated scope",
       },
     ],
     benefits: [
@@ -868,8 +994,8 @@ export const solutions = [
         en: "Improve the quality, consistency and availability of road safety statistics.",
       },
       {
-        fr: "Identifier plus rapidement les zones noires, les axes dangereux et les facteurs de risque.",
-        en: "Identify black spots, dangerous corridors and risk factors more quickly.",
+        fr: "Suivre des indicateurs tels que accidents, victimes, causes, lieux, périodes, types de véhicules et évolution des activités.",
+        en: "Monitor indicators such as crashes, victims, causes, locations, periods, vehicle types and activity trends.",
       },
       {
         fr: "Réduire le temps de collecte, de consolidation et de production des rapports.",
@@ -880,12 +1006,12 @@ export const solutions = [
         en: "Strengthen collaboration between institutions around shared indicators.",
       },
       {
-        fr: "Appuyer les politiques publiques, la planification des transports et les investissements routiers.",
-        en: "Support public policy, transport planning and road investment decisions.",
+        fr: "Appuyer le pilotage opérationnel, les revues de performance et l’aide à la décision selon les données disponibles.",
+        en: "Support operational management, performance reviews and decision-making according to available data.",
       },
       {
-        fr: "Suivre les programmes de sécurité routière et les objectifs de développement durable liés à la mobilité.",
-        en: "Monitor road safety programs and sustainable development goals related to mobility.",
+        fr: "Préparer des tableaux de bord, rapports et exports adaptés aux besoins validés par les parties prenantes.",
+        en: "Prepare dashboards, reports and exports adapted to the needs validated by stakeholders.",
       },
     ],
     useCases: [
@@ -922,8 +1048,224 @@ export const solutions = [
         en: "Government and local authorities",
       },
       {
+        fr: "Administrations, centres et responsables métier",
+        en: "Administrations, centers and business managers",
+      },
+      {
         fr: "Smart Cities",
         en: "Smart Cities",
+      },
+    ],
+    productStatusContent: {
+      eyebrow: {
+        fr: "Statut produit",
+        en: "Product status",
+      },
+      title: {
+        fr: "Un périmètre DOSER à cadrer selon les données, les acteurs et les priorités validées.",
+        en: "A DOSER scope to be framed according to validated data, stakeholders and priorities.",
+      },
+      description: {
+        fr: "La page présente la vision et les briques fonctionnelles possibles de DOSER. Les modules avancés ne doivent pas être compris comme automatiquement disponibles dans tous les contextes : ils dépendent du périmètre métier, des sources de données et des validations institutionnelles.",
+        en: "This page presents DOSER’s vision and possible functional building blocks. Advanced modules should not be understood as automatically available in every context: they depend on the business scope, data sources and institutional validations.",
+      },
+      note: {
+        fr: "Formulation prudente : DOSER peut intégrer certaines briques selon le périmètre validé, les droits d’accès, la qualité des données et les priorités de déploiement.",
+        en: "Careful framing: DOSER can integrate certain building blocks depending on the validated scope, access rights, data quality and deployment priorities.",
+      },
+    },
+    productStatusItems: [
+      {
+        title: {
+          fr: "Socle données et reporting",
+          en: "Data and reporting foundation",
+        },
+        status: {
+          fr: "Disponible selon cadrage",
+          en: "Available after scoping",
+        },
+        description: {
+          fr: "Structuration des données, indicateurs, exports et rapports peuvent être configurés selon les sources validées.",
+          en: "Data structuring, indicators, exports and reports can be configured according to validated sources.",
+        },
+      },
+      {
+        title: {
+          fr: "Tableaux de bord opérationnels",
+          en: "Operational dashboards",
+        },
+        status: {
+          fr: "En pilote / paramétrable",
+          en: "Pilot / configurable",
+        },
+        description: {
+          fr: "Les vues de suivi peuvent être déployées progressivement pour les responsables métier, administrations ou centres concernés.",
+          en: "Monitoring views can be deployed progressively for business managers, administrations or relevant centers.",
+        },
+      },
+      {
+        title: {
+          fr: "SIG, mobile, API et Open Data",
+          en: "GIS, mobile, API and Open Data",
+        },
+        status: {
+          fr: "Sur demande",
+          en: "On demand",
+        },
+        description: {
+          fr: "Ces briques peuvent être étudiées selon les usages, l’interopérabilité souhaitée, la confidentialité et la gouvernance des données.",
+          en: "These building blocks can be assessed according to use cases, desired interoperability, confidentiality and data governance.",
+        },
+      },
+      {
+        title: {
+          fr: "IA et analyses prédictives",
+          en: "AI and predictive analytics",
+        },
+        status: {
+          fr: "Vision produit",
+          en: "Product vision",
+        },
+        description: {
+          fr: "Les analyses avancées relèvent d’une trajectoire produit et nécessitent des volumes, une qualité et une validation des données suffisants.",
+          en: "Advanced analytics are part of a product trajectory and require sufficient data volume, quality and validation.",
+        },
+      },
+    ],
+    dashboardContent: {
+      eyebrow: {
+        fr: "Pilotage des données",
+        en: "Data management",
+      },
+      title: {
+        fr: "Un tableau de bord conceptuel pour illustrer le pilotage DOSER.",
+        en: "A conceptual dashboard to illustrate DOSER management.",
+      },
+      description: {
+        fr: "Ce visuel n’est pas une capture produit officielle. Il illustre les types de lectures possibles : indicateurs, carte, statut des données et suivi d’activité.",
+        en: "This visual is not an official product screenshot. It illustrates possible readings: indicators, map, data status and activity monitoring.",
+      },
+      conceptLabel: {
+        fr: "Illustration conceptuelle",
+        en: "Conceptual illustration",
+      },
+      metricsTitle: {
+        fr: "Indicateurs exemples",
+        en: "Example indicators",
+      },
+      mapTitle: {
+        fr: "Zone de suivi stylisée",
+        en: "Stylized monitoring area",
+      },
+      tableTitle: {
+        fr: "Suivi d’activité",
+        en: "Activity tracking",
+      },
+      dataStatusTitle: {
+        fr: "Statut des briques",
+        en: "Building block status",
+      },
+    },
+    dashboardMetrics: [
+      {
+        label: {
+          fr: "Accidents suivis",
+          en: "Tracked crashes",
+        },
+        value: {
+          fr: "Exemple",
+          en: "Sample",
+        },
+        detail: {
+          fr: "Volume filtrable par période et zone.",
+          en: "Volume filterable by period and area.",
+        },
+      },
+      {
+        label: {
+          fr: "Victimes / gravité",
+          en: "Victims / severity",
+        },
+        value: {
+          fr: "Indicateur",
+          en: "Indicator",
+        },
+        detail: {
+          fr: "Lecture selon les données disponibles.",
+          en: "Reading according to available data.",
+        },
+      },
+      {
+        label: {
+          fr: "Points critiques",
+          en: "Critical points",
+        },
+        value: {
+          fr: "SIG",
+          en: "GIS",
+        },
+        detail: {
+          fr: "Cartographie possible sur périmètre validé.",
+          en: "Mapping possible on a validated scope.",
+        },
+      },
+      {
+        label: {
+          fr: "Rapports",
+          en: "Reports",
+        },
+        value: {
+          fr: "Export",
+          en: "Export",
+        },
+        detail: {
+          fr: "PDF, Excel ou synthèse selon besoin.",
+          en: "PDF, Excel or summary depending on need.",
+        },
+      },
+    ],
+    dashboardRows: [
+      {
+        label: {
+          fr: "Collecte terrain",
+          en: "Field collection",
+        },
+        status: {
+          fr: "À cadrer",
+          en: "To scope",
+        },
+        detail: {
+          fr: "Sources, formulaires et rôles à valider.",
+          en: "Sources, forms and roles to validate.",
+        },
+      },
+      {
+        label: {
+          fr: "Consolidation",
+          en: "Consolidation",
+        },
+        status: {
+          fr: "Paramétrable",
+          en: "Configurable",
+        },
+        detail: {
+          fr: "Contrôles qualité et rapprochements de données.",
+          en: "Quality checks and data reconciliation.",
+        },
+      },
+      {
+        label: {
+          fr: "Reporting",
+          en: "Reporting",
+        },
+        status: {
+          fr: "Selon besoin",
+          en: "As needed",
+        },
+        detail: {
+          fr: "Rapports périodiques, exports et tableaux de suivi.",
+          en: "Periodic reports, exports and tracking tables.",
+        },
       },
     ],
     challenge: {
@@ -932,12 +1274,12 @@ export const solutions = [
         en: "Why DOSER?",
       },
       title: {
-        fr: "Répondre au problème central des données routières dispersées.",
-        en: "Solving the core problem of fragmented road safety data.",
+        fr: "Répondre au besoin de données routières mieux structurées et mieux partagées.",
+        en: "Address the need for better structured and better shared road safety data.",
       },
       description: {
-        fr: "Les données d’accidents sont souvent incomplètes, stockées dans plusieurs administrations et difficiles à partager. DOSER organise ces informations dans une plateforme commune afin de produire des indicateurs plus fiables et des décisions plus rapides.",
-        en: "Crash data is often incomplete, stored across multiple administrations and difficult to share. DOSER organizes this information in a shared platform to produce more reliable indicators and faster decisions.",
+        fr: "Les données d’accidents ou d’activités de sécurité routière peuvent être incomplètes, dispersées et difficiles à exploiter. DOSER vise à les organiser dans un cadre commun afin d’améliorer le suivi, le reporting et la prise de décision, selon les sources réellement disponibles.",
+        en: "Crash or road safety activity data can be incomplete, scattered and difficult to use. DOSER aims to organize it within a shared framework to improve monitoring, reporting and decision-making, according to the sources actually available.",
       },
       items: [
         {
@@ -966,8 +1308,8 @@ export const solutions = [
             en: "Limited decision tools",
           },
           description: {
-            fr: "Sans tableaux de bord, cartographie et reporting automatisé, les décisions publiques reposent sur des informations moins visibles et moins comparables.",
-            en: "Without dashboards, mapping and automated reporting, public decisions rely on information that is less visible and harder to compare.",
+            fr: "Sans indicateurs partagés, tableaux de bord ou rapports réguliers, les décisions publiques reposent sur des informations moins visibles et moins comparables.",
+            en: "Without shared indicators, dashboards or regular reports, public decisions rely on information that is less visible and harder to compare.",
           },
         },
       ],
@@ -978,12 +1320,12 @@ export const solutions = [
         en: "Observatory workflow",
       },
       title: {
-        fr: "De la collecte terrain à l’intelligence décisionnelle.",
-        en: "From field collection to decision intelligence.",
+        fr: "De la collecte au reporting, avec des modules activables selon le périmètre.",
+        en: "From collection to reporting, with modules activated according to scope.",
       },
       description: {
-        fr: "DOSER relie les acteurs de la sécurité routière dans une chaîne de données commune : collecte, intégration, analyse, cartographie, reporting et recommandations.",
-        en: "DOSER connects road safety stakeholders in a shared data chain: collection, integration, analysis, mapping, reporting and recommendations.",
+        fr: "DOSER peut relier les acteurs de la sécurité routière dans une chaîne de données commune : collecte, intégration, contrôle qualité, reporting et, si le contexte le permet, cartographie ou analyses avancées.",
+        en: "DOSER can connect road safety stakeholders in a shared data chain: collection, integration, quality control, reporting and, where the context allows, mapping or advanced analysis.",
       },
     },
     workflow: [
@@ -993,8 +1335,8 @@ export const solutions = [
           en: "Collect",
         },
         description: {
-          fr: "Formulaires numériques, application mobile, mode hors connexion, géolocalisation GPS et photos permettent de documenter les accidents au plus près du terrain.",
-          en: "Digital forms, mobile app, offline mode, GPS location and photos help document crashes as close to the field as possible.",
+          fr: "Selon le périmètre, la collecte peut s’appuyer sur des formulaires numériques, des imports de fichiers, une application mobile ou des données déjà disponibles chez les acteurs.",
+          en: "Depending on scope, collection can rely on digital forms, file imports, a mobile application or data already available from stakeholders.",
         },
       },
       {
@@ -1013,8 +1355,8 @@ export const solutions = [
           en: "Analyze",
         },
         description: {
-          fr: "Les tableaux de bord, statistiques, cartographies SIG et analyses prédictives transforment les données brutes en indicateurs lisibles.",
-          en: "Dashboards, statistics, GIS maps and predictive analytics turn raw data into readable indicators.",
+          fr: "Les statistiques, tableaux de bord et, si validé, cartes SIG transforment les données consolidées en indicateurs lisibles.",
+          en: "Statistics, dashboards and, if validated, GIS maps turn consolidated data into readable indicators.",
         },
       },
       {
@@ -1023,8 +1365,8 @@ export const solutions = [
           en: "Decide",
         },
         description: {
-          fr: "Les rapports, recommandations et indicateurs aident à prioriser les actions de prévention, les investissements et les politiques publiques.",
-          en: "Reports, recommendations and indicators help prioritize prevention actions, investments and public policies.",
+          fr: "Les rapports et indicateurs aident les responsables à suivre les activités, comparer les tendances et préparer des décisions mieux documentées.",
+          en: "Reports and indicators help managers monitor activities, compare trends and prepare better documented decisions.",
         },
       },
     ],
@@ -1034,52 +1376,52 @@ export const solutions = [
         en: "Key features",
       },
       title: {
-        fr: "Une plateforme complète pour exploiter les données de sécurité routière.",
-        en: "A complete platform to use road safety data.",
+        fr: "Des capacités à activer progressivement selon le contexte métier.",
+        en: "Capabilities to activate progressively according to business context.",
       },
       description: {
-        fr: "DOSER combine collecte terrain, centralisation, cartographie, intelligence artificielle et reporting pour soutenir une culture de décision basée sur les preuves.",
-        en: "DOSER combines field collection, centralization, mapping, artificial intelligence and reporting to support an evidence-based decision culture.",
+        fr: "DOSER peut combiner collecte, centralisation, tableaux de bord, reporting et modules avancés selon la maturité des données, les droits d’accès et les priorités validées.",
+        en: "DOSER can combine collection, centralization, dashboards, reporting and advanced modules depending on data maturity, access rights and validated priorities.",
       },
     },
     capabilityGroups: [
       {
         title: {
-          fr: "Collecte intelligente",
-          en: "Smart data collection",
+          fr: "Collecte et intégration des données",
+          en: "Data collection and integration",
         },
         description: {
-          fr: "La collecte est pensée pour les réalités opérationnelles du terrain, y compris les contextes de connectivité limitée.",
-          en: "Collection is designed for field realities, including contexts with limited connectivity.",
+          fr: "La collecte peut être adaptée aux réalités opérationnelles : formulaires, imports, saisie contrôlée ou application mobile selon besoin.",
+          en: "Collection can be adapted to operational realities: forms, imports, controlled entry or mobile application depending on need.",
         },
         items: [
           {
-            fr: "Formulaire numérique et application mobile",
-            en: "Digital form and mobile application",
+            fr: "Formulaires numériques ou imports de données",
+            en: "Digital forms or data imports",
           },
           {
-            fr: "Fonctionnement hors connexion",
-            en: "Offline operation",
+            fr: "Mode mobile ou hors connexion sur périmètre validé",
+            en: "Mobile or offline mode on a validated scope",
           },
           {
-            fr: "Géolocalisation GPS et photos des accidents",
-            en: "GPS location and crash photos",
+            fr: "Géolocalisation et pièces jointes si nécessaires",
+            en: "Geolocation and attachments if needed",
           },
         ],
       },
       {
         title: {
-          fr: "Centralisation nationale",
-          en: "National centralization",
+          fr: "Centralisation et qualité",
+          en: "Centralization and quality",
         },
         description: {
-          fr: "Les données sont regroupées pour donner une vision consolidée, comparable et exploitable de la sécurité routière.",
-          en: "Data is consolidated to provide a unified, comparable and usable view of road safety.",
+          fr: "Les données peuvent être regroupées pour donner une vision consolidée, comparable et exploitable du périmètre suivi.",
+          en: "Data can be consolidated to provide a unified, comparable and usable view of the monitored scope.",
         },
         items: [
           {
-            fr: "Base unique de données d’accidents",
-            en: "Single crash data repository",
+            fr: "Référentiel de données centralisé",
+            en: "Centralized data repository",
           },
           {
             fr: "Amélioration de la qualité des données",
@@ -1093,12 +1435,12 @@ export const solutions = [
       },
       {
         title: {
-          fr: "Cartographie SIG",
-          en: "GIS mapping",
+          fr: "Cartographie SIG possible",
+          en: "Possible GIS mapping",
         },
         description: {
-          fr: "La carte interactive rend visibles les zones à risque et les points critiques du réseau routier.",
-          en: "The interactive map makes risk areas and critical points on the road network visible.",
+          fr: "La cartographie peut être ajoutée lorsque les données géographiques et le besoin métier sont validés.",
+          en: "Mapping can be added when geographic data and business needs are validated.",
         },
         items: [
           {
@@ -1121,8 +1463,8 @@ export const solutions = [
           en: "Dashboards",
         },
         description: {
-          fr: "Les décideurs suivent les indicateurs clés avec une lecture claire des tendances et de l’évolution des risques.",
-          en: "Decision-makers monitor key indicators with a clear view of trends and risk evolution.",
+          fr: "Les décideurs peuvent suivre les indicateurs clés avec une lecture claire des volumes, tendances et activités.",
+          en: "Decision-makers can monitor key indicators with a clear view of volumes, trends and activities.",
         },
         items: [
           {
@@ -1141,36 +1483,36 @@ export const solutions = [
       },
       {
         title: {
-          fr: "Intelligence artificielle",
-          en: "Artificial intelligence",
+          fr: "Analyses avancées",
+          en: "Advanced analytics",
         },
         description: {
-          fr: "Les analyses avancées aident à détecter les tendances, anticiper les risques et recommander des actions préventives.",
-          en: "Advanced analytics help detect trends, anticipate risks and recommend preventive actions.",
+          fr: "Les fonctionnalités d’IA ou de prédiction relèvent d’une vision produit et nécessitent un socle de données suffisamment robuste.",
+          en: "AI or prediction features are part of a product vision and require a sufficiently robust data foundation.",
         },
         items: [
           {
-            fr: "Détection des tendances et facteurs de risque",
-            en: "Detection of trends and risk factors",
+            fr: "Détection de tendances si les données le permettent",
+            en: "Trend detection if data allows",
           },
           {
-            fr: "Prévision des zones accidentogènes",
-            en: "Prediction of crash-prone areas",
+            fr: "Prévision de zones à risque en vision produit",
+            en: "Risk-area prediction as product vision",
           },
           {
-            fr: "Recommandations stratégiques",
-            en: "Strategic recommendations",
+            fr: "Recommandations à cadrer avec les experts métier",
+            en: "Recommendations to frame with business experts",
           },
         ],
       },
       {
         title: {
-          fr: "Reporting automatique",
-          en: "Automated reporting",
+          fr: "Reporting et exports",
+          en: "Reporting and exports",
         },
         description: {
-          fr: "La production de rapports et d’exports facilite la diffusion des résultats auprès des acteurs concernés.",
-          en: "Report and export generation makes it easier to share results with the stakeholders involved.",
+          fr: "La production de rapports et d’exports peut faciliter la diffusion contrôlée des résultats auprès des acteurs concernés.",
+          en: "Report and export generation can make it easier to share results in a controlled way with relevant stakeholders.",
         },
         items: [
           {
@@ -1194,18 +1536,18 @@ export const solutions = [
         en: "Modules & technologies",
       },
       title: {
-        fr: "Un socle conçu pour connecter les métiers, les données et les systèmes.",
-        en: "A foundation designed to connect operations, data and systems.",
+        fr: "Un socle modulable, à composer selon le périmètre validé.",
+        en: "A modular foundation to compose according to validated scope.",
       },
       description: {
-        fr: "DOSER peut s’appuyer sur des modules fonctionnels et des technologies data adaptées aux besoins d’un observatoire moderne de sécurité routière.",
-        en: "DOSER can rely on functional modules and data technologies suited to a modern road safety observatory.",
+        fr: "Ces modules et technologies sont présentés comme des briques mobilisables. Leur activation dépend des données disponibles, des priorités métiers et des validations de gouvernance.",
+        en: "These modules and technologies are presented as available building blocks. Activation depends on available data, business priorities and governance validations.",
       },
       groups: [
         {
           title: {
-            fr: "Modules fonctionnels",
-            en: "Functional modules",
+            fr: "Modules mobilisables",
+            en: "Available modules",
           },
           items: [
             {
@@ -1229,35 +1571,35 @@ export const solutions = [
               en: "Road management",
             },
             {
-              fr: "Cartographie SIG",
-              en: "GIS mapping",
+              fr: "Cartographie SIG selon données",
+              en: "GIS mapping depending on data",
             },
             {
               fr: "Analyses statistiques",
               en: "Statistical analysis",
             },
             {
-              fr: "Rapports automatiques",
-              en: "Automated reports",
+              fr: "Rapports et exports",
+              en: "Reports and exports",
             },
             {
               fr: "Administration et utilisateurs",
               en: "Administration and users",
             },
             {
-              fr: "Open Data",
-              en: "Open Data",
+              fr: "Open Data sur validation",
+              en: "Open Data upon validation",
             },
             {
-              fr: "API d’intégration",
-              en: "Integration API",
+              fr: "API d’intégration sur demande",
+              en: "Integration API on demand",
             },
           ],
         },
         {
           title: {
-            fr: "Technologies mobilisables",
-            en: "Available technologies",
+            fr: "Technologies possibles",
+            en: "Possible technologies",
           },
           items: [
             {
@@ -1265,12 +1607,12 @@ export const solutions = [
               en: "Cloud Computing",
             },
             {
-              fr: "Intelligence artificielle",
-              en: "Artificial intelligence",
+              fr: "IA en vision produit",
+              en: "AI as product vision",
             },
             {
-              fr: "Big Data",
-              en: "Big Data",
+              fr: "Big Data selon volumes",
+              en: "Big Data depending on volumes",
             },
             {
               fr: "SIG / GIS",
@@ -1281,12 +1623,12 @@ export const solutions = [
               en: "PostgreSQL / PostGIS",
             },
             {
-              fr: "API REST",
-              en: "REST API",
+              fr: "API REST sur demande",
+              en: "REST API on demand",
             },
             {
-              fr: "Application mobile Android",
-              en: "Android mobile app",
+              fr: "Application mobile selon besoin",
+              en: "Mobile app depending on need",
             },
             {
               fr: "Tableau de bord Web",
@@ -1333,6 +1675,16 @@ export const solutions = [
         description: {
           fr: "Croiser les données pour comprendre l’impact humain, économique et territorial des accidents.",
           en: "Cross-reference data to understand the human, economic and territorial impact of crashes.",
+        },
+      },
+      {
+        title: {
+          fr: "Centres et responsables opérationnels",
+          en: "Centers and operational managers",
+        },
+        description: {
+          fr: "Suivre les activités, contrôler la qualité des données et préparer des rapports utiles au pilotage quotidien.",
+          en: "Monitor activities, control data quality and prepare useful reports for day-to-day management.",
         },
       },
       {

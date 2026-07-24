@@ -23,9 +23,21 @@ const footerLabels = {
     fr: "Expertises",
     en: "Expertise",
   },
+  sectors: {
+    fr: "Secteurs",
+    en: "Sectors",
+  },
   solutions: {
     fr: "Solutions",
     en: "Solutions",
+  },
+  resources: {
+    fr: "Ressources",
+    en: "Resources",
+  },
+  contact: {
+    fr: "Contact",
+    en: "Contact",
   },
   rights: {
     fr: "Tous droits réservés.",
@@ -48,21 +60,22 @@ const footerLabels = {
 export function Footer() {
   const pathname = usePathname();
   const currentLocale = getLocaleFromPathname(pathname);
+  const phoneHref = `tel:${company.phone.replaceAll(" ", "")}`;
 
   return (
     <footer className="border-t border-border bg-surface">
       <Container>
-        <div className="grid gap-10 py-14 lg:grid-cols-[1.4fr_2fr]">
+        <div className="grid gap-10 py-14 lg:grid-cols-[0.95fr_2.35fr]">
           <div>
             <Link
               href={localizePathname("/", currentLocale)}
               className="inline-flex"
             >
               <Image
-                src="/images/brand/prooftag-catis-logo-classic.jpg"
+                src="/images/brand/prooftag-catis-logo.png"
                 alt={company.name}
-                width={150}
-                height={88}
+                width={320}
+                height={188}
                 className="h-auto w-[130px]"
               />
             </Link>
@@ -73,15 +86,35 @@ export function Footer() {
 
             <div className="mt-6 space-y-2 text-sm text-muted">
               <p>{company.address}</p>
-              <p>{company.email}</p>
-              <p>{company.phone}</p>
+              <p>
+                <a
+                  href={`mailto:${company.email}`}
+                  className="transition hover:text-primary"
+                >
+                  {company.email}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={phoneHref}
+                  className="transition hover:text-primary"
+                >
+                  {company.phone}
+                </a>
+              </p>
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6">
             <FooterColumn
               title={footerLabels.company}
               links={footerNavigation.company}
+              locale={currentLocale}
+            />
+
+            <FooterColumn
+              title={footerLabels.solutions}
+              links={footerNavigation.solutions}
               locale={currentLocale}
             />
 
@@ -92,8 +125,20 @@ export function Footer() {
             />
 
             <FooterColumn
-              title={footerLabels.solutions}
-              links={footerNavigation.solutions}
+              title={footerLabels.sectors}
+              links={footerNavigation.sectors}
+              locale={currentLocale}
+            />
+
+            <FooterColumn
+              title={footerLabels.resources}
+              links={footerNavigation.resources}
+              locale={currentLocale}
+            />
+
+            <FooterColumn
+              title={footerLabels.contact}
+              links={footerNavigation.contact}
               locale={currentLocale}
             />
           </div>

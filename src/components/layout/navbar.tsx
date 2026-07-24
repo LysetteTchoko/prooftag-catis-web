@@ -55,6 +55,15 @@ export function Navbar() {
   const pathnameWithoutLocale = removeLocaleFromPathname(pathname);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openMobileSections, setOpenMobileSections] = useState<string[]>([]);
+
+  const toggleMobileSection = (href: string) => {
+    setOpenMobileSections((sections) =>
+      sections.includes(href)
+        ? sections.filter((section) => section !== href)
+        : [...sections, href]
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/90 backdrop-blur-xl">
@@ -65,10 +74,10 @@ export function Navbar() {
             className="flex items-center gap-3"
           >
             <Image
-              src="/images/brand/prooftag-catis-logo-classic.jpg"
+              src="/images/brand/prooftag-catis-logo.png"
               alt="PROOFTAG CATIS"
-              width={150}
-              height={88}
+              width={320}
+              height={188}
               preload
               className="h-auto w-[105px] md:w-[120px] xl:w-[130px]"
             />
@@ -248,29 +257,64 @@ export function Navbar() {
                   item.href
                 );
                 const children = "children" in item ? item.children : [];
+                const hasChildren = children.length > 0;
+                const mobileSectionId = `mobile-section-${item.href.replaceAll("/", "-")}`;
+                const isMobileSectionOpen =
+                  openMobileSections.includes(item.href) ||
+                  (isActive && hasChildren);
 
                 return (
                   <div key={item.href}>
-                    <Link
-                      href={localizePathname(item.href, currentLocale)}
-                      aria-current={isActive ? "page" : undefined}
+                    <div
                       className={cn(
-                        "flex items-center justify-between rounded-md px-3 py-3 text-sm font-medium transition",
+                        "flex items-center rounded-md transition",
                         isActive
                           ? "bg-primary/10 text-primary"
                           : "text-muted hover:bg-surface-muted hover:text-primary"
                       )}
-                      onClick={() => setIsOpen(false)}
                     >
-                      {getLocalizedString(item.label, currentLocale)}
+                      <Link
+                        href={localizePathname(item.href, currentLocale)}
+                        aria-current={isActive ? "page" : undefined}
+                        className="min-w-0 flex-1 px-3 py-3 text-sm font-medium"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {getLocalizedString(item.label, currentLocale)}
+                      </Link>
 
-                      {children.length > 0 ? (
-                        <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                      {hasChildren ? (
+                        <button
+                          type="button"
+                          className="mr-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition hover:bg-background"
+                          aria-expanded={isMobileSectionOpen}
+                          aria-controls={mobileSectionId}
+                          onClick={() => toggleMobileSection(item.href)}
+                        >
+                          <ChevronDown
+                            className={cn(
+                              "h-4 w-4 transition-transform",
+                              isMobileSectionOpen && "rotate-180"
+                            )}
+                            aria-hidden="true"
+                          />
+                          <span className="sr-only">
+                            {getLocalizedString(item.label, currentLocale)}
+                          </span>
+                        </button>
                       ) : null}
-                    </Link>
+                    </div>
 
-                    {children.length > 0 ? (
-                      <div className="ml-3 mt-1 grid gap-1 border-l border-border pl-3">
+                    {hasChildren ? (
+                      <div
+                        id={mobileSectionId}
+                        className={cn(
+                          "grid overflow-hidden transition-all duration-200",
+                          isMobileSectionOpen
+                            ? "grid-rows-[1fr]"
+                            : "grid-rows-[0fr]"
+                        )}
+                      >
+                        <div className="ml-3 mt-1 grid min-h-0 gap-1 border-l border-border pl-3">
                         {children.map((child) => {
                           const isChildActive = isActivePath(
                             pathnameWithoutLocale,
@@ -302,6 +346,7 @@ export function Navbar() {
                             </Link>
                           );
                         })}
+                        </div>
                       </div>
                     ) : null}
                   </div>

@@ -1,23 +1,23 @@
 export const homeNewsContent = {
   eyebrow: {
-    fr: "Actualités & ressources",
-    en: "News & resources",
+    fr: "Ressources",
+    en: "Resources",
   },
   title: {
-    fr: "Suivre les sujets liés à la sécurité et à la confiance numérique.",
-    en: "Follow topics related to security and digital trust.",
+    fr: "Approfondir les sujets de sécurité, vérification et traçabilité.",
+    en: "Explore security, verification and traceability topics.",
   },
   description: {
-    fr: "Cette section préparera les contenus éditoriaux du site : articles, annonces, ressources et informations utiles.",
-    en: "This section will host the website’s editorial content: articles, announcements, resources and useful information.",
+    fr: "Des ressources éditoriales pour mieux comprendre les enjeux liés aux documents sensibles, au contrôle terrain et aux données.",
+    en: "Editorial resources to better understand challenges related to sensitive documents, field checks and data.",
   },
   allNews: {
-    fr: "Toutes les actualités",
-    en: "All news",
+    fr: "Toutes les ressources",
+    en: "All resources",
   },
   readMore: {
-    fr: "Lire la suite",
-    en: "Read more",
+    fr: "Lire la ressource",
+    en: "Read resource",
   },
 } as const;
 
@@ -31,6 +31,10 @@ export const homeNewsItems = [
       fr: "Sécurité documentaire",
       en: "Document security",
     },
+    type: {
+      fr: "Ressource",
+      en: "Resource",
+    },
     href: "/actualites/enjeux-securite-documentaire",
     description: {
       fr: "Un aperçu des risques liés aux documents sensibles et des approches permettant de renforcer leur fiabilité.",
@@ -43,8 +47,12 @@ export const homeNewsItems = [
       en: "The role of digital verification in sensitive processes",
     },
     category: {
-      fr: "Vérification numérique",
-      en: "Digital verification",
+      fr: "Vérification terrain",
+      en: "Field verification",
+    },
+    type: {
+      fr: "Analyse",
+      en: "Insight",
     },
     href: "/actualites/verification-numerique-processus-sensibles",
     description: {
@@ -58,8 +66,12 @@ export const homeNewsItems = [
       en: "Traceability and data: better monitoring critical operations",
     },
     category: {
-      fr: "Traçabilité",
-      en: "Traceability",
+      fr: "Données & pilotage",
+      en: "Data & management",
+    },
+    type: {
+      fr: "Repère",
+      en: "Guide",
     },
     href: "/actualites/tracabilite-donnees-operations-critiques",
     description: {

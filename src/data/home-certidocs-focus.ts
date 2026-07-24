@@ -1,33 +1,66 @@
 export const certidocsFocusContent = {
   eyebrow: {
-    fr: "Focus solution",
-    en: "Solution focus",
+    fr: "Preuve métier",
+    en: "Business proof",
   },
   title: {
-    fr: "Certidocs CT, une solution phare pour le contrôle technique.",
-    en: "Certidocs CT, a flagship solution for vehicle inspection.",
+    fr: "Certidocs CT relie le centre, le document et la vérification terrain.",
+    en: "Certidocs CT connects the center, the document and field verification.",
   },
   description: {
-    fr: "Certidocs CT accompagne la sécurisation, la vérification et la traçabilité des opérations liées au contrôle technique.",
-    en: "Certidocs CT supports the security, verification and traceability of vehicle inspection operations.",
+    fr: "L’accueil présente l’essentiel : la solution structure les données du contrôle, sécurise les preuves et facilite la consultation par les acteurs autorisés.",
+    en: "The home page presents the essentials: the solution structures inspection data, secures proof and facilitates consultation by authorized actors.",
   },
   centralLabel: {
     fr: "Solution centrale",
     en: "Core solution",
   },
   cardTitle: {
-    fr: "Un parcours clair : structurer, sécuriser, vérifier, tracer.",
-    en: "A clear flow: structure, secure, verify and trace.",
+    fr: "Une chaîne de confiance lisible et contrôlable.",
+    en: "A clear and controllable trust chain.",
   },
   cardDescription: {
-    fr: "Certidocs CT encadre les informations sensibles liées au contrôle technique afin de renforcer la confiance entre les acteurs du processus.",
-    en: "Certidocs CT structures sensitive information related to vehicle inspection to strengthen trust between the actors involved.",
+    fr: "La page dédiée détaille le fonctionnement complet et les points de sécurisation.",
+    en: "The dedicated page details the full workflow and security points.",
   },
   cta: {
     fr: "Découvrir Certidocs CT",
     en: "Explore Certidocs CT",
   },
 } as const;
+
+export const certidocsProofPoints = [
+  {
+    title: {
+      fr: "Données centralisées",
+      en: "Centralized data",
+    },
+    description: {
+      fr: "Les informations utiles du contrôle sont structurées dans un parcours cohérent.",
+      en: "Useful inspection information is structured through a coherent workflow.",
+    },
+  },
+  {
+    title: {
+      fr: "Documents sécurisés",
+      en: "Secured documents",
+    },
+    description: {
+      fr: "Le procès-verbal, la vignette, le QR Code et le scellé renforcent la fiabilité documentaire.",
+      en: "The report, sticker, QR Code and seal strengthen document reliability.",
+    },
+  },
+  {
+    title: {
+      fr: "Vérification terrain",
+      en: "Field verification",
+    },
+    description: {
+      fr: "Les agents autorisés disposent d’un moyen rapide pour consulter une information fiable.",
+      en: "Authorized agents have a fast way to access reliable information.",
+    },
+  },
+] as const;
 
 export const certidocsHighlights = [
   {

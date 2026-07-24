@@ -1,23 +1,23 @@
 export const homeCtaContent = {
   eyebrow: {
-    fr: "Passer à l’action",
-    en: "Take action",
+    fr: "Solutions",
+    en: "Solutions",
   },
   title: {
-    fr: "Vous souhaitez sécuriser vos documents ou vos opérations ?",
-    en: "Do you want to secure your documents or operations?",
+    fr: "Des solutions structurées pour les environnements sensibles.",
+    en: "Structured solutions for sensitive environments.",
   },
   description: {
-    fr: "Échangez avec PROOFTAG CATIS pour identifier la solution la plus adaptée à vos enjeux de sécurité, de vérification et de traçabilité.",
-    en: "Talk to PROOFTAG CATIS to identify the solution best suited to your security, verification and traceability challenges.",
+    fr: "Certidocs CT, CT-VERIF et DOSER couvrent la sécurisation documentaire, la vérification et le pilotage des données.",
+    en: "Certidocs CT, CT-VERIF and DOSER cover document security, verification and data management.",
   },
   primaryCta: {
-    fr: "Contacter l’équipe",
-    en: "Contact the team",
-  },
-  secondaryCta: {
     fr: "Voir les solutions",
     en: "View solutions",
+  },
+  secondaryCta: {
+    fr: "Lire les ressources",
+    en: "Read resources",
   },
 } as const;
 

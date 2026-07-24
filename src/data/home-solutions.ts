@@ -4,12 +4,12 @@ export const homeSolutionsContent = {
     en: "Our solutions",
   },
   title: {
-    fr: "Des outils numériques pour sécuriser, vérifier et tracer.",
-    en: "Digital tools to secure, verify and trace.",
+    fr: "Trois solutions complémentaires.",
+    en: "Three complementary solutions.",
   },
   description: {
-    fr: "PROOFTAG CATIS développe des solutions adaptées aux environnements où la fiabilité des documents, des données et des contrôles est essentielle.",
-    en: "PROOFTAG CATIS develops solutions for environments where document, data and control reliability is essential.",
+    fr: "Une offre lisible pour le contrôle technique, la vérification numérique et l’intelligence des données routières.",
+    en: "A clear offer for vehicle inspection, digital verification and road data intelligence.",
   },
   learnMore: {
     fr: "En savoir plus",
@@ -28,8 +28,8 @@ export const homeSolutionsItems = [
     icon: "certidocs",
     featured: true,
     description: {
-      fr: "Solution dédiée à l’interconnexion des centres, à la génération des preuves et à la vérification des documents liés au contrôle technique.",
-      en: "A solution dedicated to interconnecting centers, generating evidence and verifying documents related to vehicle inspection.",
+      fr: "Solution centrale pour structurer le contrôle technique, produire les preuves et sécuriser les documents délivrés.",
+      en: "Core solution for structuring vehicle inspection, producing evidence and securing issued documents.",
     },
     points: [
       {
@@ -56,8 +56,8 @@ export const homeSolutionsItems = [
     icon: "verif",
     featured: false,
     description: {
-      fr: "Outil de vérification numérique permettant de confirmer rapidement la validité d’une information ou d’un document.",
-      en: "A digital verification tool designed to quickly confirm the validity of information or documents.",
+      fr: "Service de vérification rapide permettant aux acteurs autorisés de contrôler une information fiable.",
+      en: "Fast verification service enabling authorized actors to check reliable information.",
     },
     points: [
       {
@@ -84,8 +84,8 @@ export const homeSolutionsItems = [
     icon: "doser",
     featured: false,
     description: {
-      fr: "Solution orientée structuration, suivi et exploitation des données pour améliorer le pilotage opérationnel.",
-      en: "A solution focused on structuring, monitoring and using data to improve operational management.",
+      fr: "Plateforme d’observation et d’analyse pour transformer les données de sécurité routière en décisions utiles.",
+      en: "Observation and analytics platform turning road safety data into useful decisions.",
     },
     points: [
       {

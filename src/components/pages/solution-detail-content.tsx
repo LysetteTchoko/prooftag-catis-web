@@ -17,6 +17,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CertidocsSecurityFlow } from "@/components/pages/certidocs-security-flow";
+import { CtVerifVerificationPanel } from "@/components/pages/ct-verif-verification-panel";
+import { DoserDashboardPanel } from "@/components/pages/doser-dashboard-panel";
 import type { Solution } from "@/data/solutions";
 import { useLocale } from "@/hooks/use-locale";
 import {
@@ -30,10 +32,6 @@ const pageContent = {
     fr: "Retour aux solutions",
     en: "Back to solutions",
   },
-  requestInfo: {
-    fr: "Demander des informations",
-    en: "Request information",
-  },
   benefits: {
     fr: "Bénéfices principaux",
     en: "Key benefits",
@@ -45,6 +43,14 @@ const pageContent = {
   features: {
     fr: "Fonctionnalités mises en avant",
     en: "Highlighted features",
+  },
+  certidocsOverviewTitle: {
+    fr: "Ce que Certidocs CT sécurise",
+    en: "What Certidocs CT secures",
+  },
+  certidocsScopeTitle: {
+    fr: "Périmètre métier",
+    en: "Business scope",
   },
   workflowEyebrow: {
     fr: "Fonctionnement métier",
@@ -130,12 +136,12 @@ const certidocsMediaContent = {
     en: "Visual evidence",
   },
   title: {
-    fr: "Des supports concrets pour comprendre le dispositif Certidocs CT.",
-    en: "Concrete visuals to understand the Certidocs CT system.",
+    fr: "Documents et preuves visuelles du dispositif.",
+    en: "Documents and visual evidence from the system.",
   },
   description: {
-    fr: "Ces visuels issus de l’ancien site sont conservés comme repères métier. Ils restent présentés de manière sobre afin de renforcer la compréhension sans alourdir la page.",
-    en: "These visuals from the previous website are kept as business references. They are presented soberly to improve understanding without making the page heavier.",
+    fr: "Les captures, supports sécurisés, QR Code, scellé à bulles et documents publics sont regroupés ici pour expliquer le parcours sans disperser l’attention.",
+    en: "Screens, secured media, QR Code, bubble seal and public documents are grouped here to explain the workflow without scattering attention.",
   },
   items: [
     {
@@ -226,8 +232,8 @@ const certidocsReferenceProcessContent = {
     en: "The secured sticker issuance process.",
   },
   description: {
-    fr: "Ce schéma source complète le parcours modernisé ci-dessus en montrant la logique métier historique de délivrance, de sécurisation et de vérification.",
-    en: "This source diagram complements the modern workflow above by showing the business logic behind issuance, security and verification.",
+    fr: "Ce repère métier montre la logique de délivrance, de sécurisation et de vérification de la vignette dans le contexte du contrôle technique.",
+    en: "This business reference shows the logic behind issuing, securing and verifying the sticker in the vehicle inspection context.",
   },
   imageAlt: {
     fr: "Schéma du processus sécurisé de délivrance de vignette de contrôle technique",
@@ -309,6 +315,25 @@ export function SolutionDetailContent({
     "capabilityContent" in solution ? solution.capabilityContent : null;
   const badgeGroups = "badgeGroups" in solution ? solution.badgeGroups : null;
   const externalLink = "externalLink" in solution ? solution.externalLink : null;
+  const isCertidocs = solution.slug === "certidocs-ct";
+  const isCtVerif = solution.slug === "ct-verif";
+  const isDoser = solution.slug === "doser";
+  const verificationContent =
+    "verificationContent" in solution ? solution.verificationContent : null;
+  const verificationChecks =
+    "verificationChecks" in solution ? solution.verificationChecks : [];
+  const verificationVisual =
+    "verificationVisual" in solution ? solution.verificationVisual : null;
+  const productStatusContent =
+    "productStatusContent" in solution ? solution.productStatusContent : null;
+  const productStatusItems =
+    "productStatusItems" in solution ? solution.productStatusItems : [];
+  const dashboardContent =
+    "dashboardContent" in solution ? solution.dashboardContent : null;
+  const dashboardMetrics =
+    "dashboardMetrics" in solution ? solution.dashboardMetrics : [];
+  const dashboardRows =
+    "dashboardRows" in solution ? solution.dashboardRows : [];
 
   const t = (value: LocalizedString) => {
     return getLocalizedString(value, locale);
@@ -346,14 +371,8 @@ export function SolutionDetailContent({
                   {t(solution.description)}
                 </p>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Button asChild size="lg">
-                    <Link href={localizePathname("/contact", locale)}>
-                      {t(pageContent.requestInfo)}
-                    </Link>
-                  </Button>
-
-                  {externalLink ? (
+                {externalLink ? (
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                     <Button asChild variant="outline" size="lg">
                       <a
                         href={externalLink.href}
@@ -364,111 +383,123 @@ export function SolutionDetailContent({
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </a>
                     </Button>
-                  ) : null}
-                </div>
+                  </div>
+                ) : null}
               </div>
             </div>
 
             <div className="grid gap-6">
-              <Card padding="lg">
-                <CardHeader>
-                  <CardTitle>{t(pageContent.benefits)}</CardTitle>
-                </CardHeader>
+              {isCertidocs ? (
+                <>
+                  <Card padding="lg">
+                    <CardHeader>
+                      <CardTitle>{t(pageContent.certidocsOverviewTitle)}</CardTitle>
+                    </CardHeader>
 
-                <CardContent>
-                  <ul className="space-y-4">
-                    {solution.benefits.map((benefit) => (
-                      <li
-                        key={t(benefit)}
-                        className="flex gap-3 text-sm leading-7 text-muted"
-                      >
-                        <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                        <span>{t(benefit)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+                    <CardContent>
+                      <ul className="grid gap-3 sm:grid-cols-3">
+                        {solution.points.map((point) => (
+                          <li
+                            key={t(point)}
+                            className="rounded-lg border border-border bg-background p-4 text-sm font-medium text-foreground"
+                          >
+                            {t(point)}
+                          </li>
+                        ))}
+                      </ul>
 
-              <Card padding="lg" variant="muted">
-                <CardHeader>
-                  <CardTitle>{t(pageContent.useCases)}</CardTitle>
-                </CardHeader>
+                      <ul className="mt-6 space-y-4">
+                        {solution.benefits.map((benefit) => (
+                          <li
+                            key={t(benefit)}
+                            className="flex gap-3 text-sm leading-7 text-muted"
+                          >
+                            <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-accent" />
+                            <span>{t(benefit)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
 
-                <CardContent>
-                  <div className="flex flex-wrap gap-3">
-                    {solution.useCases.map((useCase) => (
-                      <Badge key={t(useCase)} variant="outline">
-                        {t(useCase)}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                  <Card padding="lg" variant="muted">
+                    <CardHeader>
+                      <CardTitle>{t(pageContent.certidocsScopeTitle)}</CardTitle>
+                    </CardHeader>
 
-              <Card padding="lg">
-                <CardHeader>
-                  <CardTitle>{t(pageContent.features)}</CardTitle>
-                </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-3">
+                        {solution.useCases.map((useCase) => (
+                          <Badge key={t(useCase)} variant="outline">
+                            {t(useCase)}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              ) : (
+                <>
+                  <Card padding="lg">
+                    <CardHeader>
+                      <CardTitle>{t(pageContent.benefits)}</CardTitle>
+                    </CardHeader>
 
-                <CardContent>
-                  <ul className="grid gap-3 sm:grid-cols-3">
-                    {solution.points.map((point) => (
-                      <li
-                        key={t(point)}
-                        className="rounded-lg border border-border bg-background p-4 text-sm font-medium text-foreground"
-                      >
-                        {t(point)}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+                    <CardContent>
+                      <ul className="space-y-4">
+                        {solution.benefits.map((benefit) => (
+                          <li
+                            key={t(benefit)}
+                            className="flex gap-3 text-sm leading-7 text-muted"
+                          >
+                            <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-accent" />
+                            <span>{t(benefit)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card padding="lg" variant="muted">
+                    <CardHeader>
+                      <CardTitle>{t(pageContent.useCases)}</CardTitle>
+                    </CardHeader>
+
+                    <CardContent>
+                      <div className="flex flex-wrap gap-3">
+                        {solution.useCases.map((useCase) => (
+                          <Badge key={t(useCase)} variant="outline">
+                            {t(useCase)}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card padding="lg">
+                    <CardHeader>
+                      <CardTitle>{t(pageContent.features)}</CardTitle>
+                    </CardHeader>
+
+                    <CardContent>
+                      <ul className="grid gap-3 sm:grid-cols-3">
+                        {solution.points.map((point) => (
+                          <li
+                            key={t(point)}
+                            className="rounded-lg border border-border bg-background p-4 text-sm font-medium text-foreground"
+                          >
+                            {t(point)}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
             </div>
           </div>
         </Container>
       </Section>
-
-      {solution.slug === "certidocs-ct" ? (
-        <Section spacing="md">
-          <Container>
-            <SectionHeader
-              eyebrow={t(certidocsMediaContent.eyebrow)}
-              title={t(certidocsMediaContent.title)}
-              description={t(certidocsMediaContent.description)}
-              align="center"
-            />
-
-            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-              {certidocsMediaContent.items.map((item) => (
-                <Card key={item.src} padding="lg" className="h-full">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-surface-muted">
-                    <Image
-                      src={item.src}
-                      alt={t(item.alt)}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                      className="object-contain p-3"
-                    />
-                  </div>
-
-                  <CardHeader>
-                    <CardTitle className="text-lg">
-                      {t(item.title)}
-                    </CardTitle>
-                  </CardHeader>
-
-                  <CardContent>
-                    <p className="text-sm leading-7 text-muted">
-                      {t(item.description)}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      ) : null}
 
       {challenge ? (
         <Section spacing="md" className="bg-surface">
@@ -501,7 +532,34 @@ export function SolutionDetailContent({
         </Section>
       ) : null}
 
-      {operationalServices ? (
+      {isCtVerif &&
+      verificationContent &&
+      verificationVisual &&
+      verificationChecks.length > 0 ? (
+        <CtVerifVerificationPanel
+          content={verificationContent}
+          checks={verificationChecks}
+          visual={verificationVisual}
+          externalLink={externalLink}
+        />
+      ) : null}
+
+      {isDoser &&
+      productStatusContent &&
+      dashboardContent &&
+      productStatusItems.length > 0 &&
+      dashboardMetrics.length > 0 &&
+      dashboardRows.length > 0 ? (
+        <DoserDashboardPanel
+          statusContent={productStatusContent}
+          statusItems={productStatusItems}
+          dashboardContent={dashboardContent}
+          metrics={dashboardMetrics}
+          rows={dashboardRows}
+        />
+      ) : null}
+
+      {operationalServices && !isCertidocs ? (
         <Section spacing="md">
           <Container>
             <SectionHeader
@@ -693,58 +751,92 @@ export function SolutionDetailContent({
         />
       ) : null}
 
-      {solution.slug === "certidocs-ct" ? (
-        <Section spacing="sm" className="bg-surface">
+      {isCertidocs ? (
+        <Section spacing="md" className="bg-surface">
           <Container>
-            <div className="grid gap-8 rounded-xl border border-border bg-background p-6 shadow-card lg:grid-cols-[0.34fr_0.66fr] lg:items-center md:p-8">
-              <div>
+            <SectionHeader
+              eyebrow={t(certidocsMediaContent.eyebrow)}
+              title={t(certidocsMediaContent.title)}
+              description={t(certidocsMediaContent.description)}
+              align="center"
+            />
+
+            <div className="mt-12 grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
+              <Card padding="none" className="overflow-hidden">
+                <div className="grid gap-px bg-border sm:grid-cols-2">
+                  {certidocsMediaContent.items.map((item) => (
+                    <div key={item.src} className="bg-background p-5">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-surface-muted">
+                        <Image
+                          src={item.src}
+                          alt={t(item.alt)}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 30vw"
+                          className="object-contain p-3"
+                        />
+                      </div>
+
+                      <h3 className="mt-4 text-base font-bold tracking-tight text-foreground">
+                        {t(item.title)}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-7 text-muted">
+                        {t(item.description)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card padding="lg" className="h-full">
                 <Badge variant="accent">
                   {t(certidocsReferenceProcessContent.eyebrow)}
                 </Badge>
 
-                <h3 className="mt-5 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                <h3 className="mt-5 text-2xl font-bold tracking-tight text-foreground">
                   {t(certidocsReferenceProcessContent.title)}
                 </h3>
 
                 <p className="mt-4 text-sm leading-7 text-muted">
                   {t(certidocsReferenceProcessContent.description)}
                 </p>
-              </div>
 
-              <div className="overflow-hidden rounded-lg border border-border bg-surface-muted">
-                <Image
-                  src="/images/documents/secure-sticker-issuance-process.jpg"
-                  alt={t(certidocsReferenceProcessContent.imageAlt)}
-                  width={1024}
-                  height={730}
-                  sizes="(max-width: 1024px) 100vw, 64vw"
-                  loading="eager"
-                  className="h-auto w-full"
-                />
-              </div>
+                <div className="mt-6 overflow-hidden rounded-lg border border-border bg-surface-muted">
+                  <Image
+                    src="/images/documents/secure-sticker-issuance-process.jpg"
+                    alt={t(certidocsReferenceProcessContent.imageAlt)}
+                    width={1024}
+                    height={730}
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                    className="h-auto w-full"
+                  />
+                </div>
+              </Card>
             </div>
-          </Container>
-        </Section>
-      ) : null}
 
-      {solution.slug === "certidocs-ct" ? (
-        <Section spacing="md">
-          <Container>
-            <SectionHeader
-              eyebrow={t(certidocsRegulatoryContextContent.eyebrow)}
-              title={t(certidocsRegulatoryContextContent.title)}
-              description={t(certidocsRegulatoryContextContent.description)}
-              align="center"
-            />
+            <div className="mt-10">
+              <div className="max-w-3xl">
+                <Badge variant="accent">
+                  {t(certidocsRegulatoryContextContent.eyebrow)}
+                </Badge>
 
-            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+                <h3 className="mt-4 text-2xl font-bold tracking-tight text-foreground">
+                  {t(certidocsRegulatoryContextContent.title)}
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-muted">
+                  {t(certidocsRegulatoryContextContent.description)}
+                </p>
+              </div>
+
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
               {certidocsRegulatoryContextContent.items.map((item) => (
                 <Card
                   key={item.src}
                   padding="none"
                   className="h-full overflow-hidden"
                 >
-                  <div className="relative aspect-[3/4] bg-surface-muted">
+                  <div className="relative aspect-[4/3] bg-surface-muted md:aspect-[3/2]">
                     <Image
                       src={item.src}
                       alt={t(item.alt)}
@@ -765,12 +857,66 @@ export function SolutionDetailContent({
                   </div>
                 </Card>
               ))}
+              </div>
             </div>
           </Container>
         </Section>
       ) : null}
 
-      {securityChain.length > 0 ? (
+      {operationalServices && isCertidocs ? (
+        <Section spacing="md">
+          <Container>
+            <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+              <SectionHeader
+                eyebrow={t(pageContent.operationalServicesEyebrow)}
+                title={t(pageContent.operationalServicesTitle)}
+                description={t(pageContent.operationalServicesDescription)}
+              />
+
+              <div>
+                <p className="text-base leading-8 text-muted">
+                  {t(operationalServices.intro)}
+                </p>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {operationalServices.items.map((service) => (
+                    <div
+                      key={t(service.title)}
+                      className="rounded-lg border border-border bg-surface p-5 shadow-card"
+                    >
+                      <h3 className="text-base font-bold tracking-tight text-foreground">
+                        {t(service.title)}
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-muted">
+                        {t(service.description)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <Card padding="lg" variant="muted" className="mt-6">
+                  <CardHeader>
+                    <CardTitle>{t(pageContent.equipmentTitle)}</CardTitle>
+                  </CardHeader>
+
+                  <CardContent>
+                    <div className="flex flex-wrap gap-3">
+                      {operationalServices.equipment.map((equipment) => (
+                        <Badge key={t(equipment)} variant="outline">
+                          {t(equipment)}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </Container>
+        </Section>
+      ) : null}
+
+      {securityChain.length > 0 && !isCertidocs ? (
         <Section spacing="md" className="bg-surface">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
@@ -848,6 +994,7 @@ export function SolutionDetailContent({
           </Container>
         </Section>
       ) : null}
+
     </main>
   );
 }

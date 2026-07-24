@@ -33,8 +33,8 @@ const pageContent = {
     en: "Applications and collaborations",
   },
   cardDescription: {
-    fr: "Les opportunités peuvent concerner le développement logiciel, la sécurité documentaire, la donnée, le support technique ou l’accompagnement opérationnel. Les profils souhaitant échanger avec l’équipe peuvent prendre contact via l’adresse email officielle.",
-    en: "Opportunities may involve software development, document security, data, technical support or operational guidance. Candidates who want to speak with the team can use the official email address.",
+    fr: "Les opportunités peuvent concerner le développement logiciel, la sécurité documentaire, la donnée, le support technique ou l’accompagnement opérationnel. Les profils intéressés peuvent utiliser l’adresse email officielle.",
+    en: "Opportunities may involve software development, document security, data, technical support or operational guidance. Interested candidates can use the official email address.",
   },
 } as const;
 

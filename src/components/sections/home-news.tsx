@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Newspaper } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -56,10 +56,13 @@ export function HomeNews() {
             <Card key={news.href} className="flex h-full flex-col">
               <CardHeader>
                 <div className="mb-5 flex items-center justify-between gap-4">
-                  <Badge variant="outline">{t(news.category)}</Badge>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">{t(news.category)}</Badge>
+                    <Badge variant="accent">{t(news.type)}</Badge>
+                  </div>
 
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Newspaper className="h-5 w-5" />
+                    <BookOpen className="h-5 w-5" />
                   </div>
                 </div>
 

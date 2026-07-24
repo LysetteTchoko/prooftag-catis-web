@@ -5,7 +5,7 @@ import type { Locale } from "@/constants/locales";
 
 export function createStructuredData(locale: Locale) {
   const logoUrl = new URL(
-    "/images/brand/prooftag-catis-logo-classic.jpg",
+    "/images/brand/prooftag-catis-logo.png",
     siteConfig.url
   ).toString();
 

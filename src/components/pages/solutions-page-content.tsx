@@ -12,6 +12,7 @@ import {
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { PageHeader } from "@/components/shared/page-header";
+import { SolutionSignature } from "@/components/shared/solution-signature";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -86,6 +87,11 @@ export function SolutionsPageContent() {
                   )}
                   padding="lg"
                 >
+                  <SolutionSignature
+                    variant={solution.icon}
+                    className="mb-1"
+                  />
+
                   <CardHeader>
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">

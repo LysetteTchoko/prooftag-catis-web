@@ -1,15 +1,15 @@
 export const homeSectorsContent = {
   eyebrow: {
-    fr: "Secteurs d’application",
-    en: "Application sectors",
+    fr: "Secteurs & acteurs concernés",
+    en: "Sectors & stakeholders",
   },
   title: {
-    fr: "Des solutions pensées pour les environnements où la confiance est essentielle.",
-    en: "Solutions designed for environments where trust is essential.",
+    fr: "Un écosystème institutionnel, technique et opérationnel.",
+    en: "An institutional, technical and operational ecosystem.",
   },
   description: {
-    fr: "Les solutions PROOFTAG CATIS peuvent accompagner différents acteurs confrontés à des enjeux de sécurité documentaire, de vérification numérique et de traçabilité.",
-    en: "PROOFTAG CATIS solutions can support different actors facing challenges related to document security, digital verification and traceability.",
+    fr: "PROOFTAG CATIS accompagne les acteurs qui ont besoin de preuves fiables, de contrôles vérifiables et de données mieux structurées.",
+    en: "PROOFTAG CATIS supports stakeholders that need reliable evidence, verifiable controls and better structured data.",
   },
 } as const;
 
@@ -21,8 +21,8 @@ export const homeSectorsItems = [
     },
     icon: "administration",
     description: {
-      fr: "Sécurisation, vérification et suivi des documents sensibles dans des environnements institutionnels.",
-      en: "Securing, verifying and monitoring sensitive documents in institutional environments.",
+      fr: "Ministères, administrations et autorités chargées de la supervision, de la conformité et du suivi.",
+      en: "Ministries, administrations and authorities responsible for supervision, compliance and monitoring.",
     },
   },
   {
@@ -32,8 +32,8 @@ export const homeSectorsItems = [
     },
     icon: "mobility",
     description: {
-      fr: "Fiabilisation des processus liés au contrôle technique, à la conformité et à la circulation des informations.",
-      en: "Making processes related to vehicle inspection, compliance and information flow more reliable.",
+      fr: "Centres de contrôle technique, véhicules, visites techniques, procès-verbaux et vignettes sécurisées.",
+      en: "Vehicle inspection centers, vehicles, inspections, reports and secured stickers.",
     },
   },
   {
@@ -43,8 +43,8 @@ export const homeSectorsItems = [
     },
     icon: "regulated",
     description: {
-      fr: "Accompagnement des structures ayant besoin de preuves, de contrôles et de traçabilité documentaire.",
-      en: "Supporting organizations that require proof, controls and document traceability.",
+      fr: "Assurances, garages, organisations encadrées et acteurs ayant besoin de preuves documentaires.",
+      en: "Insurance companies, garages, regulated organizations and actors that require documentary proof.",
     },
   },
   {
@@ -54,8 +54,8 @@ export const homeSectorsItems = [
     },
     icon: "data",
     description: {
-      fr: "Structuration des informations utiles pour le reporting, le suivi opérationnel et la prise de décision.",
-      en: "Structuring useful information for reporting, operational monitoring and decision-making.",
+      fr: "Tableaux de bord, indicateurs, statistiques et aide à la décision pour la sécurité routière.",
+      en: "Dashboards, indicators, statistics and decision support for road safety.",
     },
   },
 ] as const;

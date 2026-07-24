@@ -1,39 +1,39 @@
 export const homeHeroContent = {
   eyebrow: {
-    fr: "PROOFTAG CATIS | Certidocs CT",
-    en: "PROOFTAG CATIS | Certidocs CT",
+    fr: "PROOFTAG CATIS",
+    en: "PROOFTAG CATIS",
   },
   title: {
-    fr: "Sécuriser le contrôle technique, de la visite à la vérification terrain.",
-    en: "Secure vehicle inspection, from the visit to field verification.",
+    fr: "Sécuriser les documents, le contrôle technique et les données sensibles.",
+    en: "Securing documents, vehicle inspection and sensitive data.",
   },
   description: {
-    fr: "PROOFTAG CATIS déploie Certidocs CT pour interconnecter les centres de contrôle technique, sécuriser les procès-verbaux et vignettes, faciliter la vérification par QR Code et renforcer la traçabilité des opérations.",
-    en: "PROOFTAG CATIS deploys Certidocs CT to interconnect vehicle inspection centers, secure reports and stickers, enable QR Code verification and strengthen operation traceability.",
+    fr: "PROOFTAG CATIS conçoit des solutions numériques pour sécuriser, vérifier et tracer les processus liés au contrôle technique, aux documents et aux données critiques.",
+    en: "PROOFTAG CATIS designs digital solutions to secure, verify and trace processes related to vehicle inspection, documents and critical data.",
   },
   primaryCta: {
-    fr: "Découvrir Certidocs CT",
-    en: "Explore Certidocs CT",
+    fr: "Découvrir nos solutions",
+    en: "Explore our solutions",
   },
-  secondaryCta: {
-    fr: "Contacter l’équipe",
-    en: "Contact the team",
+  solutionLine: {
+    fr: "Certidocs CT au cœur du dispositif, avec CT-VERIF et DOSER.",
+    en: "Certidocs CT at the core, supported by CT-VERIF and DOSER.",
   },
   featuredLabel: {
-    fr: "Solution métier",
-    en: "Business solution",
+    fr: "Plateforme centrale",
+    en: "Core platform",
   },
   featuredTitle: {
     fr: "Certidocs CT",
     en: "Certidocs CT",
   },
   featuredDescription: {
-    fr: "Un parcours numérique pour relier les données du centre, le procès-verbal, la vignette sécurisée et le contrôle terrain.",
-    en: "A digital workflow connecting center data, the inspection report, secured sticker and field verification.",
+    fr: "Une chaîne numérique qui relie centre de contrôle, preuve documentaire, QR Code et vérification terrain.",
+    en: "A digital trust chain connecting inspection centers, documentary proof, QR Code and field verification.",
   },
   verifiedLabel: {
-    fr: "Traçable",
-    en: "Traceable",
+    fr: "Vérifiable",
+    en: "Verifiable",
   },
   verificationTitle: {
     fr: "QR Code + scellé à bulles",
@@ -64,6 +64,27 @@ export const homeHeroContent = {
     en: "QR verification",
   },
 } as const;
+
+export const homeHeroProofs = [
+  {
+    title: {
+      fr: "Documents sécurisés",
+      en: "Secured documents",
+    },
+  },
+  {
+    title: {
+      fr: "Contrôle technique",
+      en: "Vehicle inspection",
+    },
+  },
+  {
+    title: {
+      fr: "Traçabilité des données",
+      en: "Data traceability",
+    },
+  },
+] as const;
 
 export const homeHeroTrustItems = [
   {

@@ -8,8 +8,8 @@ export const mainNavigation = [
     children: [
       {
         label: {
-          fr: "PROOFTAG CATIS",
-          en: "PROOFTAG CATIS",
+          fr: "À propos",
+          en: "About",
         },
         href: "/entreprise",
       },
@@ -20,19 +20,35 @@ export const mainNavigation = [
         },
         href: "/carriere",
       },
+    ],
+  },
+  {
+    label: {
+      fr: "Solutions",
+      en: "Solutions",
+    },
+    href: "/solutions",
+    children: [
       {
         label: {
-          fr: "Actualités",
-          en: "News",
+          fr: "Certidocs CT",
+          en: "Certidocs CT",
         },
-        href: "/actualites",
+        href: "/solutions/certidocs-ct",
       },
       {
         label: {
-          fr: "Contact",
-          en: "Contact",
+          fr: "CT-VERIF",
+          en: "CT-VERIF",
         },
-        href: "/contact",
+        href: "/solutions/ct-verif",
+      },
+      {
+        label: {
+          fr: "DOSER",
+          en: "DOSER",
+        },
+        href: "/solutions/doser",
       },
     ],
   },
@@ -82,36 +98,6 @@ export const mainNavigation = [
   },
   {
     label: {
-      fr: "Solutions",
-      en: "Solutions",
-    },
-    href: "/solutions",
-    children: [
-      {
-        label: {
-          fr: "Certidocs CT",
-          en: "Certidocs CT",
-        },
-        href: "/solutions/certidocs-ct",
-      },
-      {
-        label: {
-          fr: "CT-VERIF",
-          en: "CT-VERIF",
-        },
-        href: "/solutions/ct-verif",
-      },
-      {
-        label: {
-          fr: "DOSER",
-          en: "DOSER",
-        },
-        href: "/solutions/doser",
-      },
-    ],
-  },
-  {
-    label: {
       fr: "Secteurs",
       en: "Sectors",
     },
@@ -149,17 +135,19 @@ export const mainNavigation = [
   },
   {
     label: {
-      fr: "Actualités",
-      en: "News",
+      fr: "Ressources",
+      en: "Resources",
     },
     href: "/actualites",
-  },
-  {
-    label: {
-      fr: "Contact",
-      en: "Contact",
-    },
-    href: "/contact",
+    children: [
+      {
+        label: {
+          fr: "Ressources",
+          en: "Resources",
+        },
+        href: "/actualites",
+      },
+    ],
   },
 ] as const;
 
@@ -178,36 +166,6 @@ export const footerNavigation = {
         en: "Careers",
       },
       href: "/carriere",
-    },
-    {
-      label: {
-        fr: "Actualités",
-        en: "News",
-      },
-      href: "/actualites",
-    },
-  ],
-  expertise: [
-    {
-      label: {
-        fr: "Sécurité documentaire",
-        en: "Document security",
-      },
-      href: "/expertises/securite-documentaire",
-    },
-    {
-      label: {
-        fr: "Sécurité routière",
-        en: "Road safety",
-      },
-      href: "/expertises/securite-routiere",
-    },
-    {
-      label: {
-        fr: "Analyse de données",
-        en: "Data analysis",
-      },
-      href: "/expertises/analyse-donnees",
     },
   ],
   solutions: [
@@ -231,6 +189,91 @@ export const footerNavigation = {
         en: "DOSER",
       },
       href: "/solutions/doser",
+    },
+  ],
+  expertise: [
+    {
+      label: {
+        fr: "Sécurité documentaire",
+        en: "Document security",
+      },
+      href: "/expertises/securite-documentaire",
+    },
+    {
+      label: {
+        fr: "Sécurité routière",
+        en: "Road safety",
+      },
+      href: "/expertises/securite-routiere",
+    },
+    {
+      label: {
+        fr: "Vérification numérique",
+        en: "Digital verification",
+      },
+      href: "/expertises/verification-numerique",
+    },
+    {
+      label: {
+        fr: "Analyse de données",
+        en: "Data analysis",
+      },
+      href: "/expertises/analyse-donnees",
+    },
+    {
+      label: {
+        fr: "Support & accompagnement",
+        en: "Support & guidance",
+      },
+      href: "/expertises/support-accompagnement",
+    },
+  ],
+  sectors: [
+    {
+      label: {
+        fr: "Administrations publiques",
+        en: "Public administrations",
+      },
+      href: "/secteurs/administrations-publiques",
+    },
+    {
+      label: {
+        fr: "Transport & mobilité",
+        en: "Transport & mobility",
+      },
+      href: "/secteurs/transport-mobilite",
+    },
+    {
+      label: {
+        fr: "Organisations réglementées",
+        en: "Regulated organizations",
+      },
+      href: "/secteurs/organisations-reglementees",
+    },
+    {
+      label: {
+        fr: "Données & pilotage",
+        en: "Data & management",
+      },
+      href: "/secteurs/donnees-pilotage",
+    },
+  ],
+  resources: [
+    {
+      label: {
+        fr: "Ressources",
+        en: "Resources",
+      },
+      href: "/actualites",
+    },
+  ],
+  contact: [
+    {
+      label: {
+        fr: "Contact",
+        en: "Contact",
+      },
+      href: "/contact",
     },
   ],
 } as const;

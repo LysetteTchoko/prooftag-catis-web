@@ -46,12 +46,12 @@ const pageContent = {
     en: "Expertise",
   },
   title: {
-    fr: "Des expertises au service de la sécurité et de la confiance numérique.",
-    en: "Expertise serving security and digital trust.",
+    fr: "Cinq expertises complémentaires, chacune avec un rôle précis.",
+    en: "Five complementary areas of expertise, each with a precise role.",
   },
   description: {
-    fr: "PROOFTAG CATIS combine sécurité documentaire, vérification numérique, traçabilité, analyse de données et accompagnement technique pour fiabiliser les processus métier.",
-    en: "PROOFTAG CATIS combines document security, digital verification, traceability, data analysis and technical support to make business processes more reliable.",
+    fr: "Sécuriser un document, fiabiliser une visite technique, vérifier sur le terrain, exploiter les données ou accompagner les équipes ne relèvent pas du même métier. Cette rubrique clarifie chaque savoir-faire.",
+    en: "Securing a document, making an inspection more reliable, checking in the field, using data or supporting teams are different disciplines. This section clarifies each one.",
   },
   featuredBadge: {
     fr: "Expertise clé",
@@ -138,22 +138,22 @@ export function ExpertisesPageContent() {
                     </ul>
 
                     {"businessFocus" in expertise ? (
-                      <div className="mt-6">
+                      <div className="mt-6 rounded-lg border border-border bg-background p-4">
                         <p className="text-sm font-semibold text-foreground">
                           {t(pageContent.businessFocus)}
                         </p>
 
-                        <div className="mt-3 flex flex-wrap gap-2">
+                        <ul className="mt-3 space-y-3">
                           {expertise.businessFocus.map((item) => (
-                            <Badge
+                            <li
                               key={t(item)}
-                              variant="outline"
-                              className="normal-case leading-5 tracking-normal"
+                              className="flex gap-3 text-sm leading-6 text-muted"
                             >
-                              {t(item)}
-                            </Badge>
+                              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                              <span>{t(item)}</span>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                     ) : null}
                   </CardContent>

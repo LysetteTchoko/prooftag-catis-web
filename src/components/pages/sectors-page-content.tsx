@@ -44,12 +44,12 @@ const pageContent = {
     en: "Sectors",
   },
   title: {
-    fr: "Des solutions adaptées aux environnements où la confiance est essentielle.",
-    en: "Solutions adapted to environments where trust is essential.",
+    fr: "Des usages distincts selon les acteurs et les opérations.",
+    en: "Distinct uses according to stakeholders and operations.",
   },
   description: {
-    fr: "Les solutions PROOFTAG CATIS peuvent accompagner différents acteurs confrontés à des enjeux de sécurité documentaire, de vérification numérique, de conformité et de traçabilité.",
-    en: "PROOFTAG CATIS solutions can support different actors facing challenges related to document security, digital verification, compliance and traceability.",
+    fr: "Chaque secteur n’a pas le même besoin : supervision publique, contrôle technique, preuve réglementée ou pilotage des données. Cette rubrique clarifie les contextes d’application.",
+    en: "Each sector has a different need: public supervision, vehicle inspection, regulated proof or data management. This section clarifies the application contexts.",
   },
   featuredBadge: {
     fr: "Secteur clé",
@@ -160,7 +160,7 @@ export function SectorsPageContent() {
                     ) : null}
 
                     {"operationalScope" in sector ? (
-                      <div className="mt-6">
+                      <div className="mt-6 rounded-lg border border-border bg-background p-4">
                         <p className="text-sm font-semibold text-foreground">
                           {t(pageContent.operationalScope)}
                         </p>

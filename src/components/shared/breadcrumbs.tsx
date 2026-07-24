@@ -30,8 +30,8 @@ const segmentLabels: Record<string, { fr: string; en: string }> = {
     en: "Sectors",
   },
   actualites: {
-    fr: "Actualités",
-    en: "News",
+    fr: "Ressources",
+    en: "Resources",
   },
   contact: {
     fr: "Contact",

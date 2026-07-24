@@ -54,8 +54,8 @@ const ecosystemIcons = {
 } satisfies Record<(typeof companyEcosystemRoles)[number]["icon"], LucideIcon>;
 
 const companyImageAlt = {
-  fr: "Remise institutionnelle impliquant PROOFTAG CATIS au Cameroun",
-  en: "Institutional handover involving PROOFTAG CATIS in Cameroon",
+  fr: "Présentation d’un tableau de bord numérique dans le cadre des activités PROOFTAG CATIS",
+  en: "Presentation of a digital dashboard as part of PROOFTAG CATIS activities",
 } as const;
 
 const companyInstitutionalVisuals = [
@@ -249,15 +249,24 @@ export function CompanyPageContent() {
             </div>
 
             <div className="grid gap-6">
-              <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-card">
-                <Image
-                  src="/images/company/prooftag-catis-institutional-handover.jpg"
-                  alt={t(companyImageAlt)}
-                  width={1024}
-                  height={683}
-                  sizes="(max-width: 1024px) 100vw, 44vw"
-                  className="aspect-[16/10] w-full object-cover"
-                />
+              <div className="overflow-hidden rounded-xl border border-primary/15 bg-[linear-gradient(135deg,#ffffff_0%,#f4fbff_100%)] p-3 shadow-soft">
+                <div className="overflow-hidden rounded-lg border border-border bg-white">
+                  <Image
+                    src="/images/company/prooftag-catis-dashboard-presentation.jpg"
+                    alt={t(companyImageAlt)}
+                    width={1200}
+                    height={800}
+                    sizes="(max-width: 1024px) 100vw, 44vw"
+                    className="aspect-[16/10] w-full object-cover"
+                  />
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-3 px-2 pt-4">
+                  <Badge variant="primary">PROOFTAG CATIS</Badge>
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                    Certidocs CT
+                  </span>
+                </div>
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">

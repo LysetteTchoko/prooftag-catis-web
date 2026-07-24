@@ -9,21 +9,21 @@ export const sectors = [
     icon: "administration",
     featured: true,
     description: {
-      fr: "Supervision, conformité, traçabilité et centralisation des données liées aux processus sensibles.",
-      en: "Supervision, compliance, traceability and centralization of data related to sensitive processes.",
+      fr: "Superviser les dispositifs, centraliser les données et suivre la conformité des processus sensibles.",
+      en: "Supervise systems, centralize data and monitor compliance in sensitive processes.",
     },
     points: [
       {
-        fr: "Ministère des Transports",
-        en: "Ministry of Transport",
+        fr: "Supervision institutionnelle",
+        en: "Institutional supervision",
       },
       {
-        fr: "Données centralisées",
-        en: "Centralized data",
+        fr: "Données centralisées et consultables",
+        en: "Centralized and accessible data",
       },
       {
-        fr: "Conformité et traçabilité",
-        en: "Compliance and traceability",
+        fr: "Conformité, contrôle et traçabilité",
+        en: "Compliance, control and traceability",
       },
     ],
     actors: [
@@ -46,21 +46,25 @@ export const sectors = [
     ],
     operationalScope: [
       {
-        fr: "Centraliser les informations issues des centres et des opérations de contrôle.",
-        en: "Centralize information from centers and inspection operations.",
+        fr: "Disposer d’une vision consolidée des opérations et des statuts.",
+        en: "Have a consolidated view of operations and statuses.",
       },
       {
-        fr: "Faciliter la supervision des visites, des statuts et des documents produits.",
-        en: "Facilitate supervision of inspections, statuses and generated documents.",
+        fr: "Faciliter le contrôle des documents et informations produits.",
+        en: "Make generated documents and information easier to check.",
       },
       {
-        fr: "Renforcer la traçabilité des actions et la conformité des processus.",
-        en: "Strengthen action traceability and process compliance.",
+        fr: "Appuyer la supervision sans multiplier les circuits manuels.",
+        en: "Support supervision without multiplying manual channels.",
       },
     ],
     details: {
-      fr: "Les administrations publiques, et notamment les acteurs liés au transport, ont besoin de données fiables, centralisées et vérifiables. Les solutions PROOFTAG CATIS peuvent soutenir la supervision, la conformité, la traçabilité documentaire et la consultation rapide des informations par les acteurs habilités.",
-      en: "Public administrations, especially transport-related stakeholders, need reliable, centralized and verifiable data. PROOFTAG CATIS solutions can support supervision, compliance, document traceability and fast access to information by authorized stakeholders.",
+      fr: "Les administrations publiques ont besoin d’informations fiables pour superviser des dispositifs sensibles. PROOFTAG CATIS peut contribuer à centraliser les données, contrôler la cohérence des documents et faciliter la consultation par les acteurs habilités.",
+      en: "Public administrations need reliable information to supervise sensitive systems. PROOFTAG CATIS can help centralize data, check document consistency and facilitate access by authorized stakeholders.",
+    },
+    why: {
+      fr: "Ce secteur est concerné par la supervision, la conformité et la preuve. Les solutions doivent donc faciliter le suivi institutionnel, la consultation des données et le contrôle des supports produits.",
+      en: "This sector is concerned with supervision, compliance and proof. Solutions must therefore support institutional monitoring, data consultation and checking of generated media.",
     },
   },
   {
@@ -73,8 +77,8 @@ export const sectors = [
     icon: "mobility",
     featured: false,
     description: {
-      fr: "Fiabilisation des visites techniques, des véhicules contrôlés, des procès-verbaux et des vignettes sécurisées.",
-      en: "Making vehicle inspections, inspected vehicles, reports and secured stickers more reliable.",
+      fr: "Sécuriser le parcours des centres de contrôle, des véhicules, des visites techniques et des vignettes.",
+      en: "Secure the journey of inspection centers, vehicles, inspections and stickers.",
     },
     points: [
       {
@@ -82,12 +86,12 @@ export const sectors = [
         en: "Vehicle inspection centers",
       },
       {
-        fr: "Procès-verbal et vignette sécurisée",
-        en: "Report and secured sticker",
+        fr: "Véhicules, visites et résultats",
+        en: "Vehicles, inspections and results",
       },
       {
-        fr: "Véhicules et visites techniques",
-        en: "Vehicles and inspections",
+        fr: "PV, vignette et vérification terrain",
+        en: "Report, sticker and field verification",
       },
     ],
     actors: [
@@ -114,21 +118,25 @@ export const sectors = [
     ],
     operationalScope: [
       {
-        fr: "Structurer l’enregistrement du véhicule et les résultats de la visite technique.",
-        en: "Structure vehicle registration and inspection results.",
+        fr: "Structurer l’enregistrement du véhicule et le dossier de visite.",
+        en: "Structure vehicle registration and the inspection file.",
       },
       {
-        fr: "Sécuriser la production du procès-verbal et la délivrance de la vignette.",
-        en: "Secure report generation and sticker issuance.",
+        fr: "Sécuriser la production du procès-verbal et de la vignette.",
+        en: "Secure report and sticker production.",
       },
       {
-        fr: "Améliorer la vérification terrain et la confiance dans les preuves de contrôle.",
-        en: "Improve field verification and trust in inspection evidence.",
+        fr: "Rendre la vérification terrain plus directe pour les agents autorisés.",
+        en: "Make field verification more direct for authorized agents.",
       },
     ],
     details: {
-      fr: "Le transport et la mobilité exigent des processus fiables pour les véhicules, les visites techniques, les procès-verbaux et les vignettes. PROOFTAG CATIS apporte une approche orientée traçabilité, sécurité documentaire et vérification afin de réduire les incertitudes autour du contrôle technique.",
-      en: "Transport and mobility require reliable processes for vehicles, inspections, reports and stickers. PROOFTAG CATIS brings an approach focused on traceability, document security and verification to reduce uncertainty around vehicle inspection.",
+      fr: "Le transport et la mobilité reposent sur des contrôles techniques lisibles, cohérents et vérifiables. Les solutions PROOFTAG CATIS ciblent le parcours de visite : enregistrement du véhicule, données de contrôle, procès-verbal, vignette sécurisée et vérification terrain.",
+      en: "Transport and mobility rely on inspections that are readable, consistent and verifiable. PROOFTAG CATIS solutions target the inspection journey: vehicle registration, inspection data, report, secured sticker and field verification.",
+    },
+    why: {
+      fr: "Ce secteur concentre l’activité terrain : véhicules, centres, techniciens, agents et usagers. La priorité est de relier chaque étape de la visite technique à une preuve claire et contrôlable.",
+      en: "This sector concentrates field activity: vehicles, centers, technicians, agents and users. The priority is to link each inspection step to clear and checkable proof.",
     },
   },
   {
@@ -141,21 +149,21 @@ export const sectors = [
     icon: "regulated",
     featured: false,
     description: {
-      fr: "Sécurisation des processus sensibles où la preuve documentaire, le contrôle et la conformité sont essentiels.",
-      en: "Securing sensitive processes where documentary proof, control and compliance are essential.",
+      fr: "Renforcer la preuve documentaire, la conformité et la traçabilité dans les processus encadrés.",
+      en: "Strengthen documentary proof, compliance and traceability in regulated processes.",
     },
     points: [
       {
-        fr: "Preuve documentaire",
-        en: "Documentary proof",
+        fr: "Preuve documentaire contrôlable",
+        en: "Checkable documentary proof",
       },
       {
-        fr: "Contrôle et conformité",
-        en: "Control and compliance",
+        fr: "Processus sensibles et conformité",
+        en: "Sensitive processes and compliance",
       },
       {
-        fr: "Fiabilité des informations",
-        en: "Information reliability",
+        fr: "Réduction des litiges et falsifications",
+        en: "Reduction of disputes and falsification",
       },
     ],
     actors: [
@@ -168,31 +176,35 @@ export const sectors = [
         en: "Automotive garages",
       },
       {
-        fr: "Investisseurs",
-        en: "Investors",
+        fr: "Organisations soumises à contrôle",
+        en: "Organizations subject to control",
       },
       {
-        fr: "Prooftag SAS",
-        en: "Prooftag SAS",
+        fr: "Investisseurs",
+        en: "Investors",
       },
     ],
     operationalScope: [
       {
-        fr: "Protéger les documents et supports utilisés dans les processus sensibles.",
-        en: "Protect documents and media used in sensitive processes.",
+        fr: "Protéger les documents utilisés dans les processus encadrés.",
+        en: "Protect documents used in regulated processes.",
       },
       {
-        fr: "Faciliter la vérification de la preuve documentaire par les acteurs concernés.",
-        en: "Make documentary proof easier for stakeholders to verify.",
+        fr: "Faciliter la vérification d’une preuve par les acteurs concernés.",
+        en: "Make proof easier for relevant stakeholders to verify.",
       },
       {
-        fr: "Structurer les contrôles pour réduire les erreurs, les litiges et les falsifications.",
-        en: "Structure controls to reduce errors, disputes and falsification.",
+        fr: "Structurer les contrôles pour limiter erreurs, litiges et copies.",
+        en: "Structure checks to limit errors, disputes and copies.",
       },
     ],
     details: {
-      fr: "Les organisations réglementées manipulent des documents, preuves et informations dont la fiabilité conditionne la conformité. Les mécanismes de sécurisation documentaire, de vérification numérique et de traçabilité permettent de mieux contrôler ces processus sensibles.",
-      en: "Regulated organizations handle documents, evidence and information whose reliability affects compliance. Document security, digital verification and traceability mechanisms help better control these sensitive processes.",
+      fr: "Les organisations réglementées manipulent des documents et preuves dont la fiabilité engage leur conformité. Les mécanismes de sécurisation documentaire, de vérification numérique et de traçabilité aident à mieux contrôler ces processus sans les rendre inutilement lourds.",
+      en: "Regulated organizations handle documents and proof whose reliability affects compliance. Document security, digital verification and traceability mechanisms help better control these processes without making them unnecessarily heavy.",
+    },
+    why: {
+      fr: "Ce secteur a besoin de preuves opposables, vérifiables et cohérentes. L’enjeu n’est pas seulement de conserver un document, mais de pouvoir démontrer son origine, son intégrité et son statut.",
+      en: "This sector needs proof that is enforceable, verifiable and consistent. The challenge is not only to keep a document, but to demonstrate its origin, integrity and status.",
     },
   },
   {
@@ -205,8 +217,8 @@ export const sectors = [
     icon: "data",
     featured: false,
     description: {
-      fr: "Tableaux de bord, indicateurs, statistiques, reporting et vision opérationnelle pour mieux piloter les activités.",
-      en: "Dashboards, indicators, statistics, reporting and operational visibility to better manage activities.",
+      fr: "Transformer les données disponibles en indicateurs, rapports et vues d’aide à la décision.",
+      en: "Turn available data into indicators, reports and decision-support views.",
     },
     points: [
       {
@@ -214,18 +226,22 @@ export const sectors = [
         en: "Dashboards and indicators",
       },
       {
-        fr: "Statistiques et reporting",
-        en: "Statistics and reporting",
+        fr: "Statistiques, exports et reporting",
+        en: "Statistics, exports and reporting",
       },
       {
-        fr: "Vision opérationnelle",
-        en: "Operational visibility",
+        fr: "Pilotage opérationnel et décision",
+        en: "Operational management and decision-making",
       },
     ],
     actors: [
       {
         fr: "Administrations publiques",
         en: "Public administrations",
+      },
+      {
+        fr: "Responsables opérationnels",
+        en: "Operational managers",
       },
       {
         fr: "Investisseurs",
@@ -242,21 +258,25 @@ export const sectors = [
     ],
     operationalScope: [
       {
-        fr: "Exploiter les données centralisées pour produire des indicateurs fiables.",
-        en: "Use centralized data to produce reliable indicators.",
+        fr: "Exploiter les données centralisées pour produire des indicateurs.",
+        en: "Use centralized data to produce indicators.",
       },
       {
-        fr: "Améliorer le reporting et le suivi des opérations dans le temps.",
-        en: "Improve reporting and long-term operation monitoring.",
+        fr: "Suivre l’évolution des opérations, anomalies et tendances.",
+        en: "Monitor operations, anomalies and trends over time.",
       },
       {
-        fr: "Appuyer la prise de décision grâce à une vision plus claire du terrain.",
-        en: "Support decision-making through a clearer field-level view.",
+        fr: "Préparer des rapports utiles au pilotage et à la décision.",
+        en: "Prepare reports useful for management and decision-making.",
       },
     ],
     details: {
-      fr: "Les données deviennent utiles lorsqu’elles sont centralisées, structurées et transformées en indicateurs. Les tableaux de bord, statistiques et rapports aident les responsables à mieux comprendre les opérations, suivre les tendances et prendre des décisions plus éclairées.",
-      en: "Data becomes useful when it is centralized, structured and transformed into indicators. Dashboards, statistics and reports help managers better understand operations, track trends and make more informed decisions.",
+      fr: "Les données deviennent utiles lorsqu’elles sont structurées, contrôlées et transformées en lectures compréhensibles. Les tableaux de bord, statistiques et rapports permettent aux responsables de suivre les opérations, comparer les tendances et préparer des décisions mieux documentées.",
+      en: "Data becomes useful when it is structured, checked and turned into understandable readings. Dashboards, statistics and reports allow managers to monitor operations, compare trends and prepare better documented decisions.",
+    },
+    why: {
+      fr: "Ce secteur se distingue par le besoin de pilotage. L’objectif est de passer de données isolées à des indicateurs lisibles, partageables et utiles pour rendre compte ou arbitrer.",
+      en: "This sector stands out through its management needs. The objective is to move from isolated data to readable, shareable indicators that are useful for reporting or decision-making.",
     },
   },
 ] as const;

@@ -51,10 +51,6 @@ const pageContent = {
     fr: "Expertise",
     en: "Expertise",
   },
-  contact: {
-    fr: "Échanger avec l’équipe",
-    en: "Talk to the team",
-  },
   keyPoints: {
     fr: "Points clés",
     en: "Key points",
@@ -95,6 +91,8 @@ export function ExpertiseDetailContent({
   };
 
   const Icon = expertiseIcons[expertise.icon];
+  const whyDescription =
+    "why" in expertise ? expertise.why : pageContent.whyDescription;
 
   return (
     <main className="min-h-screen bg-background">
@@ -137,13 +135,6 @@ export function ExpertiseDetailContent({
                   {t(expertise.details)}
                 </p>
 
-                <div className="mt-8">
-                  <Button asChild size="lg">
-                    <Link href={localizePathname("/contact", locale)}>
-                      {t(pageContent.contact)}
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </div>
 
@@ -197,7 +188,7 @@ export function ExpertiseDetailContent({
 
                 <CardContent>
                   <p className="text-sm leading-7 text-muted">
-                    {t(pageContent.whyDescription)}
+                    {t(whyDescription)}
                   </p>
                 </CardContent>
               </Card>

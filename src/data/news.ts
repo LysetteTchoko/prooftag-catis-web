@@ -11,8 +11,12 @@ export const news = [
       en: "Document security",
     },
     type: {
-      fr: "Ressource",
-      en: "Resource",
+      fr: "Ressource de référence",
+      en: "Reference resource",
+    },
+    editorialLabel: {
+      fr: "Contenu éditorial",
+      en: "Editorial content",
     },
     description: {
       fr: "Un point clair sur les risques liés aux documents sensibles et les moyens de renforcer leur fiabilité.",
@@ -46,6 +50,10 @@ export const news = [
         en: "Strengthen trust between the actors involved.",
       },
     ],
+    conclusion: {
+      fr: "La sécurité documentaire gagne en efficacité lorsqu’elle combine protection physique, vérification numérique et traçabilité claire des supports sensibles.",
+      en: "Document security becomes more effective when it combines physical protection, digital verification and clear traceability of sensitive media.",
+    },
   },
   {
     slug: "verification-numerique-processus-sensibles",
@@ -55,12 +63,16 @@ export const news = [
     },
     href: "/actualites/verification-numerique-processus-sensibles",
     category: {
-      fr: "Vérification numérique",
-      en: "Digital verification",
+      fr: "Vérification terrain & numérique",
+      en: "Field & digital verification",
     },
     type: {
-      fr: "Analyse",
-      en: "Analysis",
+      fr: "Analyse métier",
+      en: "Business insight",
+    },
+    editorialLabel: {
+      fr: "Contenu éditorial",
+      en: "Editorial content",
     },
     description: {
       fr: "Comment les outils numériques facilitent l’authentification rapide et l’accès à des informations fiables.",
@@ -94,6 +106,10 @@ export const news = [
         en: "Improve access to useful information.",
       },
     ],
+    conclusion: {
+      fr: "Un parcours de vérification utile doit rester simple pour l’agent, fiable dans le résultat et adapté aux conditions réelles de contrôle.",
+      en: "A useful verification journey must remain simple for the agent, reliable in its result and suited to real control conditions.",
+    },
   },
   {
     slug: "tracabilite-donnees-operations-critiques",
@@ -103,12 +119,16 @@ export const news = [
     },
     href: "/actualites/tracabilite-donnees-operations-critiques",
     category: {
-      fr: "Traçabilité",
-      en: "Traceability",
+      fr: "Données & pilotage",
+      en: "Data & management",
     },
     type: {
-      fr: "Ressource",
-      en: "Resource",
+      fr: "Repère opérationnel",
+      en: "Operational guide",
+    },
+    editorialLabel: {
+      fr: "Contenu de référence",
+      en: "Reference content",
     },
     description: {
       fr: "La structuration des données permet d’améliorer le suivi, le reporting et la prise de décision.",
@@ -142,6 +162,10 @@ export const news = [
         en: "Improve decision-making.",
       },
     ],
+    conclusion: {
+      fr: "Des données mieux structurées donnent aux responsables une vision plus claire des opérations et des priorités de pilotage.",
+      en: "Better structured data gives decision-makers a clearer view of operations and management priorities.",
+    },
   },
   {
     slug: "confiance-numerique-environnements-reglementes",
@@ -151,12 +175,16 @@ export const news = [
     },
     href: "/actualites/confiance-numerique-environnements-reglementes",
     category: {
-      fr: "Confiance numérique",
-      en: "Digital trust",
+      fr: "Conformité & confiance",
+      en: "Compliance & trust",
     },
     type: {
-      fr: "Perspective",
-      en: "Perspective",
+      fr: "Perspective éditoriale",
+      en: "Editorial perspective",
+    },
+    editorialLabel: {
+      fr: "Contenu de référence",
+      en: "Reference content",
     },
     description: {
       fr: "Pourquoi la preuve, la vérification et la traçabilité deviennent essentielles dans les organisations sensibles.",
@@ -190,6 +218,10 @@ export const news = [
         en: "Create more reliable processes.",
       },
     ],
+    conclusion: {
+      fr: "Dans un environnement réglementé, la confiance se construit avec des preuves lisibles, vérifiables et exploitables par les acteurs autorisés.",
+      en: "In regulated environments, trust is built with evidence that is readable, verifiable and usable by authorized stakeholders.",
+    },
   },
 ] as const;
 

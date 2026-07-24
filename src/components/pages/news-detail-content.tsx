@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Newspaper } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle2 } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -24,8 +24,8 @@ import {
 
 const pageContent = {
   back: {
-    fr: "Retour aux actualités",
-    en: "Back to news",
+    fr: "Retour aux ressources",
+    en: "Back to resources",
   },
   takeaways: {
     fr: "Points à retenir",
@@ -36,20 +36,12 @@ const pageContent = {
     en: "About this resource",
   },
   aboutDescription: {
-    fr: "Cette ressource est un contenu éditorial générique préparé pour structurer le module Actualités. Elle pourra être remplacée plus tard par un vrai article officiel validé par PROOFTAG CATIS.",
-    en: "This resource is generic editorial content prepared to structure the News module. It can later be replaced by an official article validated by PROOFTAG CATIS.",
+    fr: "Cette page est une ressource éditoriale de référence. Elle ne constitue pas une annonce d’entreprise datée et pourra être enrichie plus tard avec des publications officielles validées.",
+    en: "This page is a reference editorial resource. It is not a dated company announcement and may later be expanded with validated official publications.",
   },
-  contactTitle: {
-    fr: "Besoin d’informations ?",
-    en: "Need information?",
-  },
-  contactDescription: {
-    fr: "Pour en savoir plus sur les solutions PROOFTAG CATIS, contactez l’équipe.",
-    en: "To learn more about PROOFTAG CATIS solutions, contact the team.",
-  },
-  contactButton: {
-    fr: "Contacter l’équipe",
-    en: "Contact the team",
+  conclusionTitle: {
+    fr: "Conclusion",
+    en: "Conclusion",
   },
 } as const;
 
@@ -87,6 +79,7 @@ export function NewsDetailContent({ item }: NewsDetailContentProps) {
                 <div className="flex flex-wrap items-center gap-3">
                   <Badge variant="outline">{t(item.category)}</Badge>
                   <Badge variant="accent">{t(item.type)}</Badge>
+                  <Badge variant="outline">{t(item.editorialLabel)}</Badge>
                 </div>
 
                 <div className="mt-8 space-y-6">
@@ -99,6 +92,15 @@ export function NewsDetailContent({ item }: NewsDetailContentProps) {
                     </p>
                   ))}
                 </div>
+
+                <div className="mt-8 rounded-xl border border-primary/15 bg-primary/5 p-5">
+                  <p className="text-sm font-semibold text-foreground">
+                    {t(pageContent.conclusionTitle)}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    {t(item.conclusion)}
+                  </p>
+                </div>
               </Card>
             </article>
 
@@ -106,7 +108,7 @@ export function NewsDetailContent({ item }: NewsDetailContentProps) {
               <Card padding="lg">
                 <CardHeader>
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Newspaper className="h-6 w-6" />
+                    <BookOpen className="h-6 w-6" />
                   </div>
 
                   <CardTitle className="mt-6">
@@ -141,25 +143,6 @@ export function NewsDetailContent({ item }: NewsDetailContentProps) {
                 </CardContent>
               </Card>
 
-              <Card padding="lg">
-                <CardHeader>
-                  <CardTitle>{t(pageContent.contactTitle)}</CardTitle>
-                </CardHeader>
-
-                <CardContent>
-                  <p className="text-sm leading-7 text-muted">
-                    {t(pageContent.contactDescription)}
-                  </p>
-
-                  <div className="mt-6">
-                    <Button asChild>
-                      <Link href={localizePathname("/contact", locale)}>
-                        {t(pageContent.contactButton)}
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
             </aside>
           </div>
         </Container>

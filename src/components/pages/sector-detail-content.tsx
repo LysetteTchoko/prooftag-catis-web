@@ -55,10 +55,6 @@ const pageContent = {
     fr: "Secteur",
     en: "Sector",
   },
-  contact: {
-    fr: "Échanger avec l’équipe",
-    en: "Talk to the team",
-  },
   mainIssues: {
     fr: "Enjeux principaux",
     en: "Key challenges",
@@ -184,6 +180,8 @@ export function SectorDetailContent({ sector }: SectorDetailContentProps) {
   };
 
   const Icon = sectorIcons[sector.icon];
+  const whyDescription =
+    "why" in sector ? sector.why : pageContent.whyDescription;
 
   return (
     <main className="min-h-screen bg-background">
@@ -226,13 +224,6 @@ export function SectorDetailContent({ sector }: SectorDetailContentProps) {
                   {t(sector.details)}
                 </p>
 
-                <div className="mt-8">
-                  <Button asChild size="lg">
-                    <Link href={localizePathname("/contact", locale)}>
-                      {t(pageContent.contact)}
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </div>
 
@@ -308,7 +299,7 @@ export function SectorDetailContent({ sector }: SectorDetailContentProps) {
 
                 <CardContent>
                   <p className="text-sm leading-7 text-muted">
-                    {t(pageContent.whyDescription)}
+                    {t(whyDescription)}
                   </p>
                 </CardContent>
               </Card>
